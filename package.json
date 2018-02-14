@@ -9,7 +9,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "build": "hexo generate && gulp",
+    "clean": "hexo clean",
+    "build": "npm run clean && hexo generate && gulp",
     "eslint": "eslint .",
     "deploy": "hexo deploy",
     "start": "hexo server"
