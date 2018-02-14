@@ -1,0 +1,28 @@
+proposal:
+  ES2016:
+    exponentiation-operator: exponentiation-operator.html
+  ES2017:
+    ecmascript-asyncawait: ecmascript-asyncawait.html
+    ecmascript_sharedmem: ecmascript_sharedmem.html
+    trailing-function-commas: trailing-function-commas.html
+  ES2018:
+    template-literal-revision: template-literal-revision.html
+    regexp-dotall-flag: regexp-dotall-flag.html
+    regexp-named-groups: regexp-named-groups.html
+    object-rest-spread: object-rest-spread.html
+  Stage4:
+    async-iteration: async-iteration.html
+    regexp-lookbehind: regexp-lookbehind.html
+    regexp-unicode-property-escapes: regexp-unicode-property-escapes.html
+  FAQ:
+    reserved-words: reserved-words.html
+    
+api:
+  ES2016:
+    Array.prototype.includes: Array.prototype.includes.html
+  ES2017:
+    object-values-entries: object-values-entries.html
+    string-pad-start-end: string-pad-start-end.html
+    object-getownpropertydescriptors: object-getownpropertydescriptors.html
+  Stage4:
+    Promise.prototype.finally: Promise.prototype.finally.html

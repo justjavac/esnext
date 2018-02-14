@@ -1,0 +1,30 @@
+title: esnext | es6 es7 es2017 es2018 es2019
+subtitle: "最新 JavaScript 特性介绍，es6 es7 es2018 es2019"
+description: "esnext 致力于介绍 tc39 规范下的最新 JavaScript 特性及语法，以及 babel 插件"
+author: esnext
+language: zh-cn
+timezone: Asia/Shanghai
+
+url: http://esnext.justjavac.com
+root: /
+permalink: news/:year/:month/:day/:title/
+archive_dir: news
+code_dir: downloads/code
+new_post_name: :year-:month-:day-:title.md # File name of new posts
+post_asset_folder: true
+per_page: 0
+
+theme: navy
+deploy:
+  type: git
+  repo: git@github.com:justjavac/esnext.git
+
+highlight:
+  enable: true
+  line_number: false
+
+disqus_shortname: false
+google_analytics: false
+twitter: justjavac
+weibo: justjavac
+github: justjavac/esnext

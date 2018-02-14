@@ -1,0 +1,18 @@
+{
+  "extends": "hexo",
+  "root": true,
+  "rules": {
+    "strict": "off"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "overrides": [{
+    "files": "gulpfile.js",
+    "rules": {
+        "node/no-unpublished-require": 0,
+        "node/no-missing-require": 0
+    }
+  }]
+}

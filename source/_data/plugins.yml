@@ -1,0 +1,149 @@
+- name: es3-member-expression-literals
+  description: Ensure that reserved words are quoted in property accesses
+  link: https://babeljs.io/docs/plugins/transform-es3-member-expression-literals/
+
+- name: es3-property-literals
+  description: Ensure that reserved words are quoted in object property keys
+  link: https://babeljs.io/docs/plugins/transform-es3-property-literals/
+- name: es5-property-mutators
+  description: Transform object initializer mutators into Object.defineProperties
+  link: https://babeljs.io/docs/plugins/transform-es5-property-mutators/
+
+- name: check-es2015-constants
+  description: Validate ES2015 constants
+  link: https://babeljs.io/docs/plugins/check-es2015-constants/
+- name: es2015-arrow-functions
+  description: Compile ES2015 arrow functions to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-arrow-functions/
+- name: es2015-block-scoped-functions
+  description: Ensure function declarations at the block level are block scoped
+  link: https://babeljs.io/docs/plugins/transform-es2015-block-scoped-functions/
+- name: es2015-block-scoping
+  description: Compile ES2015 block scoping (const and let) to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-block-scoping/
+- name: es2015-classes
+  description: Compile ES2015 classes to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-classes/
+- name: es2015-computed-properties
+  description: Compile ES2015 computed properties to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-computed-properties/
+- name: es2015-destructuring
+  description: Compile ES2015 destructuring to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-destructuring/
+- name: es2015-duplicate-keys
+  description: Compile objects with duplicate keys to valid strict ES5.
+  link: https://babeljs.io/docs/plugins/transform-es2015-duplicate-keys/
+- name: es2015-for-of
+  description: Compile ES2015 for...of to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-for-of/
+- name: es2015-function-name
+  description: Apply ES2015 function.name semantics to all functions
+  link: https://babeljs.io/docs/plugins/transform-es2015-function-name/
+- name: es2015-literals
+  description: Compile ES2015 integer and unicode literals to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-literals/
+- name: es2015-object-super
+  description: Compile ES2015 object super to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-object-super/
+- name: es2015-parameters
+  description: Compile ES2015 default and rest parameters to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-parameters/
+- name: es2015-shorthand-properties
+  description: Compile ES2015 shorthand properties and methods to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-shorthand-properties/
+- name: es2015-spread
+  description: Compile ES2015 spread to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-spread/
+- name: es2015-sticky-regex
+  description: Compile ES2015 sticky regex to an ES5 RegExp constructor
+  link: https://babeljs.io/docs/plugins/transform-es2015-sticky-regex/
+- name: es2015-template-literals
+  description: Compile ES2015 template literals to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-template-literals/
+- name: es2015-typeof-symbol
+  description: This transformer wraps all `typeof` expressions with a method that replicates native behaviour. (ie. returning "symbol" for symbols)
+  link: https://babeljs.io/docs/plugins/transform-es2015-typeof-symbol/
+- name: es2015-unicode-regex
+  description: Compile ES2015 unicode regex to ES5
+  link: https://babeljs.io/docs/plugins/transform-es2015-unicode-regex/
+
+- name: exponentiation-operator
+  description: Compile exponentiation operator to ES5
+  link: https://babeljs.io/docs/plugins/transform-exponentiation-operator/
+
+- name: async-to-generator
+  description: urn async functions into ES2015 generators
+  link: https://babeljs.io/docs/plugins/transform-async-to-generator/
+
+- name: es2015-modules-amd
+  description: This plugin transforms ES2015 modules to AMD.
+  link: https://babeljs.io/docs/plugins/transform-es2015-modules-amd/
+- name: es2015-modules-commonjs
+  description: This plugin transforms ES2015 modules to CommonJS.
+  link: https://babeljs.io/docs/plugins/transform-es2015-modules-commonjs/
+- name: es2015-modules-systemjs
+  description: This plugin transforms ES2015 modules to SystemJS.
+  link: https://babeljs.io/docs/plugins/transform-es2015-modules-systemjs/
+- name: es2015-modules-umd
+  description: This plugin transforms ES2015 modules to UMD.
+  link: https://babeljs.io/docs/plugins/transform-es2015-modules-umd/
+
+- name: async-generator-functions
+  description: Turn async generator functions and for-await statements to ES2015 generators
+  link: https://babeljs.io/docs/plugins/transform-async-generator-functions/
+- name: async-to-module-method
+  description: This plugin allows Babel to transform async functions into a Bluebird coroutine.
+  link: https://babeljs.io/docs/plugins/transform-async-to-module-method/
+- name: class-constructor-call
+  description: This plugin allows Babel to transform class constructors
+  link: https://babeljs.io/docs/plugins/transform-class-constructor-call/
+  deprecated: true
+- name: class-properties
+  description: Transforms class properties
+  link: https://babeljs.io/docs/plugins/transform-class-properties/
+- name: decorators
+  description: Compile class and object decorators to ES5
+  link: https://babeljs.io/docs/plugins/transform-decorators/
+- name: do-expressions
+  description: Compile `do` expressions to ES5
+  link: https://babeljs.io/docs/plugins/transform-do-expressions/
+- name: export-extensions
+  description: Compile additional export-from statements to ES2015
+  link: https://babeljs.io/docs/plugins/transform-export-extensions/
+- name: function-bind
+  description: Compile the new function bind operator `::` to ES5
+  link: https://babeljs.io/docs/plugins/transform-function-bind/
+- name: object-rest-spread
+  description: Transform rest properties for object destructuring assignment and spread properties for object literals
+  link: https://babeljs.io/docs/plugins/transform-object-rest-spread/
+
+- name: eval
+  description: Compile eval calls with string literals
+  link: https://babeljs.io/docs/plugins/transform-eval/
+- name: flow-comments
+  description: Turn flow type annotations into comments
+  link: https://babeljs.io/docs/plugins/transform-flow-comments/
+- name: flow-strip-types
+  description: Strip all flow type annotations and declarations from your output code（This plugin only removes flow types. It doesn't actually check if the types are valid itself. You'll need to use flow itself or a different babel plugin）
+  link: https://babeljs.io/docs/plugins/transform-flow-strip-types/
+- name: jscript
+  description: This plugin allows Babel to transform named function expressions into function declarations to get around some particularly nasty JScript bugs related to name function expressions
+  link: https://babeljs.io/docs/plugins/transform-jscript/
+- name: object-assign
+  description: Replace Object.assign with an inline helper
+  link: https://babeljs.io/docs/plugins/transform-object-assign/
+- name: object-set-prototype-of-to-assign
+  description: This plugin will transform all `Object.setPrototypeOf` calls to a method that will do a shallow defaults of all properties
+  link: https://babeljs.io/docs/plugins/transform-object-set-prototype-of-to-assign/
+- name: proto-to-assign
+  description: This plugin allows Babel to transform all `__proto__` assignments to a method that will do a shallow copy of all properties.
+  link: https://babeljs.io/docs/plugins/transform-proto-to-assign/
+- name: regenerator
+  description: This plugin uses the regenerator module to transform async and generator functions. regeneratorRuntime is not included.
+  link: https://babeljs.io/docs/plugins/transform-regenerator/
+- name: runtime
+  description: Externalise references to helpers and builtins, automatically polyfilling your code without polluting globals
+  link: https://babeljs.io/docs/plugins/transform-runtime/
+- name: strict-mode
+  description: This plugin places a "use strict"; directive at the top of all files to enable strict mode
+  link: https://babeljs.io/docs/plugins/transform-strict-mode/

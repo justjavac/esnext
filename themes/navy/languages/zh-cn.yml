@@ -1,0 +1,37 @@
+menu:
+  proposal: 提案
+  api: API
+  news: 文章
+  plugins: 插件
+  search: 搜索
+
+sidebar:
+  proposal:
+    ES2016: ES2016
+    exponentiation-operator: 幂运算符(**)
+    ES2017: ES2017
+    ecmascript-asyncawait: 异步函数
+    ecmascript_sharedmem: 共享内存和原子操作
+    trailing-function-commas: 函数参数的末尾逗号
+    ES2018: ES2018
+    template-literal-revision: 非转义序列的模板字符串
+    regexp-dotall-flag: 正则表达式 <code>dotAll</code> 模式
+    regexp-named-groups: 正则表达式命名捕获组
+    object-rest-spread: 对象展开运算符
+    Stage4: Stage4
+    async-iteration: 异步迭代器
+    regexp-lookbehind: 正则表达式反向(后向)断言
+    regexp-unicode-property-escapes: 正则表达式 Unicode 转义
+    FAQ: FAQ
+    reserved-words: 保留字
+  
+  api:
+    ES2016: ES2016
+    Array.prototype.includes: Array.prototype.includes
+    ES2017: ES2017
+    object-values-entries: Object.{values,entries}
+    string-pad-start-end: String.prototype.{padStart,padEnd}
+    object-getownpropertydescriptors: Object.getOwnPropertyDescriptors
+    ES2018: ES2018
+    Stage4: Stage4
+    Promise.prototype.finally: Promise.prototype.finally.html
