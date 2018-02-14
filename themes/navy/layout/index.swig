@@ -2,7 +2,7 @@
   <div class="inner">
     <h2 id="banner-title">{{ page.subtitle }}</h2>
     <div id="banner-start">
-      <span id="banner-start-command">git clone https://github.com/justjavac/esnext.git</span><a id="banner-start-link" href="proposal/exponentiation-operator.html"><i class="fa fa-arrow-right"></i></a>
+      <span id="banner-start-command">npm ready for ...</span><a id="banner-start-link" href="proposal/exponentiation-operator.html"><i class="fa fa-arrow-right"></i></a>
     </div>
   </div>
 </header>
