@@ -157,7 +157,7 @@ matchers.groups.foo;    // TypeError: Cannot read property 'groups' of null
 
 ## 8. 向下兼容
 
-`/(?<name>)/` 和 `/\k<foo>/` 只有在命名捕获组中才有意义。如果正则表达式没有明明捕获组，那么 `/\k<foo>/` 仅仅是字符串字面量`"k<foo>"` 而已。
+`/(?<name>)/` 和 `/\k<foo>/` 只有在命名捕获组中才有意义。如果正则表达式没有命名捕获组，那么 `/\k<foo>/` 仅仅是字符串字面量`"k<foo>"` 而已。
 
 ```js
 /\k<foo>/.test('k<foo>');   // true
