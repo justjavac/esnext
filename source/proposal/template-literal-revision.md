@@ -3,7 +3,7 @@ title: 非转义序列的模板字符串
 
 这个 ECMAScript 提案 “[Template Literal Revision](https://tc39.github.io/proposal-template-literal-revision/)” 由 Tim Disney 负责，目前已经进入 stage 4，本提案是 ECMAScript 2018(ES9) 的一部分。该提案让我们使用模板字符串的标签函数语法更加的自由。
 
-## 标签函数 Tagged templates
+## 1. 标签函数 Tagged templates
 
 标签使您可以用函数解析模板字符串。标签函数的第一个参数包含一个字符串值的数组。其余的参数与表达式相关。最后，你的函数可以返回处理好的的字符串（或者它可以返回完全不同的东西）。
 
@@ -16,7 +16,7 @@ foo`justjavac`; // 输出 JUSTJAVAC
 foo`Xyz`; // 输出 XYZ
 ```
 
-## `String.raw()`
+## 2. `String.raw()`
 
 `String.raw()` 是一个模板字符串的标签函数，它的作用类似于 Python 中的字符串前缀 r 和 C# 中的字符串前缀 @，是用来获取一个模板字符串的**原始字面量值**的。
 
@@ -41,7 +41,7 @@ str.split('').join(',');
 // 结果是："H,i,\,n,5,!"
 ```
 
-## 原始字符串
+## 3. 原始字符串
 
 在标签函数的第一个参数中，存在一个特殊的属性 `raw`，我们可以通过它来访问模板字符串的原始字符串，而不经过特殊字符的替换。
 
@@ -61,7 +61,7 @@ foo`just\\java\\c`;
 ["just\java\c", raw: ["just\\java\\c"]]
 ```
 
-## 带标签函数的转义序列
+## 4. 带标签函数的转义序列
 
 自 ES2016 起，带标签的模版字面量遵守以下转义序列的规则：
 
@@ -77,7 +77,7 @@ String.raw`\`;
 Uncaught SyntaxError: Unterminated template literal
 ```
 
-## ES2018 关于非法转义序列的修订
+## 5. ES2018 关于非法转义序列的修订
 
 带标签函数的模版字符串应该允许嵌套支持常见转义序列的语言（例如 [DSLs](https://en.wikipedia.org/wiki/Domain-specific_language)、[LaTeX](https://en.wikipedia.org/wiki/LaTeX)）。
 
@@ -97,7 +97,7 @@ let bad = `bad escape sequence: \unicode`;
 // throws early error：SyntaxError: Invalid Unicode escape sequence
 ```
 
-## 实现
+## 6. 实现
 
 - [V8](https://bugs.chromium.org/p/v8/issues/detail?id=5546) - Chrome 62
 - [SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=1317375) - Firefox 53
@@ -105,7 +105,7 @@ let bad = `bad escape sequence: \unicode`;
 - [ChakraCore](https://github.com/Microsoft/ChakraCore/issues/2344) - 开发中
 - [Babel](https://github.com/babel/babel/issues/4798) - 7.x
 
-## 相关链接：
+## 7. 相关链接：
 
 - https://github.com/tc39/proposal-template-literal-revision
 - https://tc39.github.io/proposal-template-literal-revision/

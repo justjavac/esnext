@@ -1,6 +1,8 @@
 title: 保留字
 ---
 
+## 1. 概述
+
 保留字（Reserved Words）是 JavaScript 预留的一些标识符名（IdentifierName），保留字不能用作变量、函数名、和对象名。
 
 在 ES 规范中，保留字定义如下：
@@ -21,7 +23,7 @@ ReservedWord ::
 
 **未来保留字**被用作未来语言特性扩展时可能会使用到的关键字，因此保留。
 
-## ES6(ES2015) 关键字
+## 2. ES6(ES2015) 关键字
 
 ES6(ES2015) 的**关键字**有 33 个：
 
@@ -123,11 +125,11 @@ function foo() {
 }
 ```
 
-## ES7(ES2016) 关键字
+## 3. ES7(ES2016) 关键字
 
 ES7 没有新增保留字。
 
-## ES8(ES2017) 关键字
+## 4. ES8(ES2017) 关键字
 
 `await` 从未来保留字(FutureReservedWords)变成了关键字。语义和 `yield` 一样。
 
@@ -140,7 +142,7 @@ const await = 0;
 function await(){};
 ```
 
-## 其它
+## 5. 其它
 
 ES7(ES2016) 新增了[异步函数](./ecmascript-asyncawait.html)，但是在现行规范里面，`async` 并不是关键字(???)。但是从代码表现的行为来看，`async` 也类似与 `await` 和 `yield`。
 

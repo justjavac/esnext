@@ -1,7 +1,7 @@
 title: 异步迭代器
 ---
 
-## 概述
+## 1. 概述
 
 在 ECMAScript 2015(ES6) 中 JavaScript 引入了迭代器接口（iterator）用来遍历数据。迭代器对象知道如何每次访问集合中的一项， 并跟踪该序列中的当前位置。在  JavaScript 中迭代器是一个对象，它提供了一个 `next()` 方法，用来返回序列中的下一项。这个方法返回包含两个属性：`done` 和 `value`。
 
@@ -39,7 +39,7 @@ it.next().done;   // true
 it.next().value;  // undefined
 ```
 
-## 可迭代对象
+## 2. 可迭代对象
 
 一个定义了**迭代行为**的对象，比如在 `for...of` 中循环了哪些值。为了实现可迭代，一个对象必须实现 `@@iterator` 方法，这意味着这个对象（或其原型链中的一个对象）必须具有带 `Symbol.iterator` 键的属性：
 
@@ -85,7 +85,7 @@ for (const item of justjavac) {
 // c
 ```
 
-## 同步迭代
+## 3. 同步迭代
 
 由于在迭代器方法返回时，序列中的下一个值和数据源的 "done" 状态必须已知，所以迭代器只适合于表示**同步**数据源。
 
@@ -95,7 +95,7 @@ for (const item of justjavac) {
 
 为了给异步数据源提供通用的数据访问协议，我们引入了 `AsyncIterator` 接口，异步迭代语句（`for-await-of`）和异步生成器函数。
 
-## 异步迭代器
+## 4. 异步迭代器
 
 一个异步迭代器就像一个迭代器，除了它的 `next()` 方法返回一个 `{ value, done }` 的 promise。如上所述，我们必须返回迭代器结果的 promise，因为在迭代器方法返回时，迭代器的下一个值和“完成”状态可能未知。
 
@@ -153,9 +153,9 @@ for await (const item of justjavac) {
 })();
 ```
 
-## 同步迭代器 vs 异步迭代器
+## 5. 同步迭代器 vs 异步迭代器
 
-### Iterators
+### 5.1 Iterators
 
 ```js
 // 迭代器
@@ -172,7 +172,7 @@ interface IteratorResult {
 }
 ```
 
-### Async Iterators
+### 5.2 Async Iterators
 
 ```js
 // 异步迭代器
@@ -189,7 +189,7 @@ interface IteratorResult {
 }
 ```
 
-## 异步生成器函数
+## 6. 异步生成器函数
 
 异步生成器函数与生成器函数类似，但有以下区别：
 
@@ -215,7 +215,7 @@ async function* readLines(path) {
 
 函数返回一个异步生成器（async generator）对象，可以用在 `for-await-of` 语句中。
 
-## 实现
+## 7. 实现
 
 - [Chakra](https://github.com/Microsoft/ChakraCore/issues/2720) - 暂未支持
 - [JavaScriptCore](https://github.com/tc39/proposal-async-iteration/issues/63#issuecomment-330929480) - Safari Tech Preview 40
@@ -236,8 +236,6 @@ require("babylon").parse("code", {
   ]
 });
 ```
-
-Additionally, as of 6.16.0, async iteration is included in Babel under the the name "babel-plugin-transform-async-generator-functions" as well as with babel-preset-stage-3. Note that the semantics implemented there are slightly out of date compared to the current spec text in various edge cases.
 
 另外，从 6.16.0 开始，异步迭代被包含在 Babel 的 [`"babel-plugin-transform-async-generator-functions"`](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-async-generator-functions) 下以及 [`babel-preset-stage-3`](http://babeljs.io/docs/plugins/preset-stage-3/)。
 

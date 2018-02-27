@@ -3,7 +3,7 @@ title: 正则表达式反向(lookbehind)断言
 
 “正则表达式反向断言” 提案 [proposal-regexp-lookbehind](https://github.com/tc39/proposal-regexp-lookbehind) 由 Gorkem Yakin, Nozomu Katō, Daniel Ehrenberg 负责，目前已经进入 stage 4，预计会是 ES9(ES2018) 的一部分。
 
-## 概述
+## 1. 概述
 
 断言(Assertion)是一个对当前匹配位置之前或之后的字符的测试， 它不会实际消耗任何字符，所以断言也被称为“非消耗性匹配”或“非获取匹配”。
 
@@ -26,7 +26,7 @@ lookahead 和 lookbehind 通过被翻译为：
 
 本文档使用“正向”、“反向”。
 
-## Lookahead assertions 正向断言
+## 2. Lookahead assertions 正向断言
 
 在当前的 JavaScript 正则表达式版本中，只支持正向断言。
 
@@ -64,7 +64,7 @@ const match2 = regex.exec('justphp');
 console.log(match2[0]); // 结果是 just
 ```
 
-## 反向断言
+## 3. 反向断言
 
 反向断言和正向断言的行为一样，只是方向相反。
 
@@ -98,7 +98,7 @@ regex.exec('￥1.9');
 
 这段正则表达式匹配到了 `'￥1.9'` 里面的 `9`。因为 `9` 前面是 `.` 而不是 `￥`，完全符合反向否定断言规则。
 
-## 组合
+## 4. 组合
 
 多个断言(任意顺序)可以同时出现。 
 
@@ -127,9 +127,9 @@ regex.test('123abcfoo');    // true
 
 另外一个模式 `(?<=\d{3}...(?<!999))foo` 则匹配前面有三个数字字符紧跟 3 个不是 `999` 的任意字符的 `foo`。
 
-## 细节
+## 5. 细节
 
-### 从右向左的贪婪匹配
+### 5.1 从右向左的贪婪匹配
 
 如果组中有贪婪匹配的子模式，则在反向断言中的捕获组将具有不同的值。
 
@@ -139,19 +139,19 @@ regex.test('123abcfoo');    // true
 
 当普通模式 `/^(\d+)(\d+)/` 匹配 `1053` 时，第 1 个组捕获 `'105'`，第 2 个组捕获 `'3'`。
 
-### 捕获组的索引
+### 5.2 捕获组的索引
 
 在反向断言匹配中，组的次序是从左到右的。
 
 当模式 `/(?<=(\d+)(\d+))$/` 匹配 `1053` 时，`match[1]` 是 `"1"`，`match[2]` 是 `"053"`。
 
-### 引用捕获组
+### 5.3 引用捕获组
 
 只有当捕获组被执行后，我们才能对他进行引用。
 
 例如在正则表达式 `/(?<=(.)\1)/` 中，`\1` 的值始终是空字符串，正确的写法是 `/(?<=\1(.))/`。
 
-## 实现
+## 6 实现
 
 - [V8](https://bugs.chromium.org/p/v8/issues/detail?id=4545), shipping in Chrome 62
 - [XS](https://github.com/Moddable-OpenSource/moddable/blob/public/xs/sources/xsre.c), in [January 17, 2018 update](http://blog.moddable.tech/blog/january-17-2017-big-update-to-moddable-sdk/)

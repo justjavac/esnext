@@ -1,4 +1,4 @@
-title: RegExp Named Capture Groups 命名捕获组
+title: 正则表达式命名捕获组
 ---
 
 ECMAScript 提案“正则表达式命名捕获组” [proposal-regexp-named-groups](https://github.com/tc39/proposal-regexp-named-groups) 由 Gorkem Yakin, Daniel Ehrenberg 负责，目前已经进入 stage 4，将会是 ES9(ES2018) 的一部分。

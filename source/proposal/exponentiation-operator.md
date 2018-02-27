@@ -3,19 +3,19 @@ title: 幂运算符(**)
 
 ECMAScript 幂运算符(`**`) 由 Rick Waldron 负责。目前已经进入 stage 4， 幂运算符(`**`) 是 ECMAScript 2016(ES7) 的一部分。
 
-## 概述
+## 1. 概述
 
 幂运算符返回第一个操作数做底数，第二个操作数做指数的乘方。即，x<sup>y</sup>，其中 `x` 和 `y` 是其两个操作数。
 
 幂运算符是右结合的。`a ** b ** c` 等同于 `a ** (b ** c)`。
 
-### 语法
+### 2. 语法
 
 ```js
 x ** y
 ```
 
-### 注解
+### 3. 注解
 
 在大多数编程语言，比如 PHP 或 Python 等中，都包含幂运算符（一般来说符号是 `^` 或者 `**`）。
 
@@ -48,7 +48,7 @@ typeof (2 ** 2); // "number"
 2 ** -2;         // 0.25
 ```
 
-## 其它示例
+## 4. 其它示例
 
 ```js
 2 ** 3 ** 2     // 512
@@ -59,7 +59,7 @@ Infinity ** -Infinity; // 0
 (-2) ** (0.2);         // NaN
 ```
 
-## Math.pow()
+## 5. Math.pow()
 
 `x ** y` 等价于 `Math.pow(x, y)`。但是在之前的 V8 引擎实现时有一个 bug，导致两者并不总是相等，比如：`Math.pow(99,99)` 的结果是 `3.697296376497263e+197`，但是 `99**99` 的结果是 `3.697296376497268e+197`。
 
@@ -70,7 +70,7 @@ Infinity ** -Infinity; // 0
 
 截至目前（2018-02-11）在最新版 Chrome 66（V8 6.6.43）中这个 bug 依然没有修复。关于这个 bug 的详细情况可以参考我之前的文章 [V8 使用“常量折叠”优化技巧，导致幂（**）运算有时候不等于 Math.pow()](https://zhuanlan.zhihu.com/p/25067384)
 
-## Math.pow() 特殊值处理
+## 6. Math.pow() 特殊值处理
 
 返回 `x` 的 `y` 次方的依赖于实现的近似值 .
 
@@ -98,7 +98,7 @@ Infinity ** -Infinity; // 0
 - 若 `x` 是 `−0` 且 `y<0` 且 `y` 不是奇数, 返回结果是 `+∞`.
 - 若 `x<0` 且 `x` 是有限的, 且 `y` 是有限的, 且 `y` 不是整数 , 返回结果是 `NaN`.
 
-## 实现
+## 7. 实现
 
 - Babel - [transform-exponentiation-operator](https://babeljs.io/docs/plugins/transform-exponentiation-operator/)
 - [V8](https://code.google.com/p/v8/issues/detail?id=3915) - Chrome 52
