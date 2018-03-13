@@ -11,6 +11,15 @@
   </header>
   <div class="article-content" itemprop="articleBody">
     {{ page_anchor(post.content) }}
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5061364613986259"
+        data-ad-slot="9593020197"
+        data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </div>
   {{ partial('partial/comment') }}
 </article>
