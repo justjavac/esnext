@@ -112,9 +112,9 @@ ajv@^5.2.3, ajv@^5.3.0:
     json-schema-traverse "^0.3.0"
 
 ajv@^6.5.5:
-  version "6.10.1"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.10.1.tgz#ebf8d3af22552df9dd049bfbe50cc2390e823593"
-  integrity sha512-w1YQaVGNC6t2UCPjEawK/vo/dG8OOrVtUmhBT1uJJYxbl5kU2Tj3v6LGqBcsysN1yhuCStJCCA3GqdvKY8sqXQ==
+  version "6.10.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.10.2.tgz#d3cea04d6b017b2894ad69040fec8b623eb4bd52"
+  integrity sha512-TXtUUEYHuaTEbLZWIKUr5pmBuhDLy+8KYtPYdcV8qC+pOZL+NKqYwvWSRrVXHn+ZmRRAu8vJTAznH7Oag6RVRw==
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -2401,7 +2401,7 @@ hexo-util@^0.6.0, hexo-util@^0.6.3:
 
 "hexo@github:hexojs/hexo":
   version "3.9.0"
-  resolved "https://codeload.github.com/hexojs/hexo/tar.gz/f172774d37f8dffe01d9acecd3613a8b6782e22a"
+  resolved "https://codeload.github.com/hexojs/hexo/tar.gz/00151a11e728c25e6281b908f1a13a076304f452"
   dependencies:
     abbrev "^1.1.1"
     archy "^1.0.0"
