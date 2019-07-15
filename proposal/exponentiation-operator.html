@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>幂运算符(**) | esnext | es6 es7 es2017 es2018 es2019</title>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://esnext.justjavac.com/proposal/exponentiation-operator.html">
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#2f83cd">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/build/css/navy-ae512ba918.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="esnext | es6 es7 es2017 es2018 es2019">
+  <!-- Open Graph -->
+  <meta name="description" content="ECMAScript 幂运算符(**) 由 Rick Waldron 负责。目前已经进入 stage 4， 幂运算符(**) 是 ECMAScript 2016(ES7) 的一部分。 1. 概述幂运算符返回第一个操作数做底数，第二个操作数做指数的乘方。即，xy，其中 x 和 y 是其两个操作数。 幂运算符是右结合的。a ** b ** c 等同于 a ** (b ** c)。 2. 语法x **">
+<meta property="og:type" content="website">
+<meta property="og:title" content="幂运算符(**)">
+<meta property="og:url" content="http://esnext.justjavac.com/proposal/exponentiation-operator.html">
+<meta property="og:site_name" content="esnext | es6 es7 es2017 es2018 es2019">
+<meta property="og:description" content="ECMAScript 幂运算符(**) 由 Rick Waldron 负责。目前已经进入 stage 4， 幂运算符(**) 是 ECMAScript 2016(ES7) 的一部分。 1. 概述幂运算符返回第一个操作数做底数，第二个操作数做指数的乘方。即，xy，其中 x 和 y 是其两个操作数。 幂运算符是右结合的。a ** b ** c 等同于 a ** (b ** c)。 2. 语法x **">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-12T02:11:43.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="幂运算符(**)">
+<meta name="twitter:description" content="ECMAScript 幂运算符(**) 由 Rick Waldron 负责。目前已经进入 stage 4， 幂运算符(**) 是 ECMAScript 2016(ES7) 的一部分。 1. 概述幂运算符返回第一个操作数做底数，第二个操作数做指数的乘方。即，xy，其中 x 和 y 是其两个操作数。 幂运算符是右结合的。a ** b ** c 等同于 a ** (b ** c)。 2. 语法x **">
+<meta name="twitter:site" content="justjavac">
+ <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1f336f31cd6db48ca0ad520a9c7e4c57";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/proposal/exponentiation-operator.html" class="main-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="main-nav-link">API</a><a href="/news/" class="main-nav-link">文章</a><a href="/plugins/" class="main-nav-link">插件</a>
+      <a target="_blank" href="https://github.com/justjavac/esnext" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">幂运算符(**)</h1>
+                <a href="https://github.com/justjavac/esnext/edit/master/source/proposal/exponentiation-operator.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>ECMAScript 幂运算符(<code>**</code>) 由 Rick Waldron 负责。目前已经进入 stage 4， 幂运算符(<code>**</code>) 是 ECMAScript 2016(ES7) 的一部分。</p>
+<h2 id="1-概述" class="article-heading"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述<a class="article-anchor" href="#1-概述" aria-hidden="true"></a></h2><p>幂运算符返回第一个操作数做底数，第二个操作数做指数的乘方。即，x<sup>y</sup>，其中 <code>x</code> 和 <code>y</code> 是其两个操作数。</p>
+<p>幂运算符是右结合的。<code>a ** b ** c</code> 等同于 <code>a ** (b ** c)</code>。</p>
+<h3 id="2-语法" class="article-heading"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法<a class="article-anchor" href="#2-语法" aria-hidden="true"></a></h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">x ** y</span><br></pre></td></tr></table></figure>
+<h3 id="3-注解" class="article-heading"><a href="#3-注解" class="headerlink" title="3. 注解"></a>3. 注解<a class="article-anchor" href="#3-注解" aria-hidden="true"></a></h3><p>在大多数编程语言，比如 PHP 或 Python 等中，都包含幂运算符（一般来说符号是 <code>^</code> 或者 <code>**</code>）。</p>
+<p>这些语言中的幂运算符有着比其他的单目运算符（如一元 <code>+</code> 或一元 <code>-</code> ）更高的优先级。但是作为例外，在 Bash 中，<code>**</code> 运算符被设计为比单目运算符优先级更低。</p>
+<p>在最新的 JavaScript ES2016(ES7) 中，<strong>禁止使用带歧义的幂运算表达式</strong>。比如，底数前不能紧跟一元运算符（<code>+</code>/<code>-</code>/<code>~</code>/<code>!</code>/<code>delete</code>/<code>void</code>/<code>typeof</code>）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">-2</span> ** <span class="number">2</span>;</span><br><span class="line">+<span class="number">2</span> ** <span class="number">2</span>;</span><br><span class="line">~<span class="number">2</span> ** <span class="number">2</span>;</span><br><span class="line">!<span class="number">2</span> ** <span class="number">2</span>;</span><br><span class="line"><span class="keyword">delete</span> <span class="number">2</span> ** <span class="number">2</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="number">2</span> ** <span class="number">2</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="number">2</span> ** <span class="number">2</span>;</span><br><span class="line"><span class="comment">// SyntaxError: Unexpected token **</span></span><br><span class="line"></span><br><span class="line">-(<span class="number">2</span> ** <span class="number">2</span>);       <span class="comment">// -4</span></span><br><span class="line">+(<span class="number">2</span> ** <span class="number">2</span>);       <span class="comment">// 4</span></span><br><span class="line">~(<span class="number">2</span> ** <span class="number">2</span>);       <span class="comment">// -5</span></span><br><span class="line">(~<span class="number">2</span>) ** <span class="number">2</span>;       <span class="comment">// 9</span></span><br><span class="line">!<span class="number">2</span> ** <span class="number">2</span>;         <span class="comment">// 9</span></span><br><span class="line"><span class="keyword">delete</span> (<span class="number">2</span> ** <span class="number">2</span>); <span class="comment">// true</span></span><br><span class="line">(<span class="keyword">delete</span> <span class="number">2</span>) ** <span class="number">2</span>; <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">void</span> (<span class="number">2</span> ** <span class="number">2</span>);   <span class="comment">// undefined</span></span><br><span class="line">(<span class="keyword">void</span> <span class="number">2</span>) ** <span class="number">2</span>;   <span class="comment">// NaN</span></span><br><span class="line"><span class="keyword">typeof</span> (<span class="number">2</span> ** <span class="number">2</span>); <span class="comment">// "number"</span></span><br><span class="line">(<span class="keyword">typeof</span> <span class="number">2</span>) ** <span class="number">2</span>; <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span> ** <span class="number">-2</span>;         <span class="comment">// 0.25</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-其它示例" class="article-heading"><a href="#4-其它示例" class="headerlink" title="4. 其它示例"></a>4. 其它示例<a class="article-anchor" href="#4-其它示例" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">3</span> ** <span class="number">2</span>     <span class="comment">// 512</span></span><br><span class="line"><span class="number">2</span> ** (<span class="number">3</span> ** <span class="number">2</span>)   <span class="comment">// 512</span></span><br><span class="line">(<span class="number">2</span> ** <span class="number">3</span>) ** <span class="number">2</span>   <span class="comment">// 64</span></span><br><span class="line"></span><br><span class="line"><span class="literal">Infinity</span> ** -<span class="literal">Infinity</span>; <span class="comment">// 0</span></span><br><span class="line">(<span class="number">-2</span>) ** (<span class="number">0.2</span>);         <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-Math-pow" class="article-heading"><a href="#5-Math-pow" class="headerlink" title="5. Math.pow()"></a>5. Math.pow()<a class="article-anchor" href="#5-Math-pow" aria-hidden="true"></a></h2><p><code>x ** y</code> 等价于 <code>Math.pow(x, y)</code>。但是在之前的 V8 引擎实现时有一个 bug，导致两者并不总是相等，比如：<code>Math.pow(99,99)</code> 的结果是 <code>3.697296376497263e+197</code>，但是 <code>99**99</code> 的结果是 <code>3.697296376497268e+197</code>。</p>
+<p>两者并不相等：</p>
+<p>3.69729637649726<strong>3</strong>e+197<br>3.69729637649726<strong>8</strong>e+197</p>
+<p>截至目前（2018-02-11）在最新版 Chrome 66（V8 6.6.43）中这个 bug 依然没有修复。关于这个 bug 的详细情况可以参考我之前的文章 <a href="https://zhuanlan.zhihu.com/p/25067384" target="_blank" rel="noopener">V8 使用“常量折叠”优化技巧，导致幂（**）运算有时候不等于 Math.pow()</a></p>
+<h2 id="6-Math-pow-特殊值处理" class="article-heading"><a href="#6-Math-pow-特殊值处理" class="headerlink" title="6. Math.pow() 特殊值处理"></a>6. Math.pow() 特殊值处理<a class="article-anchor" href="#6-Math-pow-特殊值处理" aria-hidden="true"></a></h2><p>返回 <code>x</code> 的 <code>y</code> 次方的依赖于实现的近似值 .</p>
+<ul>
+<li>若<code>y</code> 是 <code>NaN</code>, 返回结果是 <code>NaN</code>.</li>
+<li>若<code>y</code> 是 <code>+0</code>, 返回结果是 <code>1</code>, 即使 <code>x</code> 是 <code>NaN</code>.</li>
+<li>若<code>y</code> 是 <code>−0</code>, 返回结果是 <code>1</code>, 即使 <code>x</code> 是 <code>NaN</code>.</li>
+<li>若 <code>x</code> 是 <code>NaN</code> 且 <code>y</code> 是非零 , 返回结果是 <code>NaN</code>.</li>
+<li>若 <code>abs(x)&gt;1</code> 且 <code>y</code> 是 <code>+∞</code>, 返回结果是 <code>+∞</code>.</li>
+<li>若 <code>abs(x)&gt;1</code> 且 <code>y</code> 是 <code>−∞</code>, 返回结果是 <code>+0</code>.</li>
+<li>若 <code>abs(x)==1</code> 且 <code>y</code> 是 <code>+∞</code>, 返回结果是 <code>NaN</code>.</li>
+<li>若 <code>abs(x)==1</code> 且 <code>y</code> 是 <code>−∞</code>, 返回结果是 <code>NaN</code>.</li>
+<li>若 <code>abs(x)&lt;1</code> 且 <code>y</code> 是 <code>+∞</code>, 返回结果是 <code>+0</code>.</li>
+<li>若 <code>abs(x)&lt;1</code> 且 <code>y</code> 是 <code>−∞</code>, 返回结果是 <code>+∞</code>.</li>
+<li>若 <code>x</code> 是 <code>+∞</code> 且 <code>y&gt;0</code>, 返回结果是 <code>+∞</code>.</li>
+<li>若 <code>x</code> 是 <code>+∞</code> 且 <code>y&lt;0</code>, 返回结果是 <code>+0</code>.</li>
+<li>若 <code>x</code> 是 <code>−∞</code> 且 <code>y&gt;0</code> 且 <code>y</code> 是奇数 , 返回结果是 <code>−∞</code>.</li>
+<li>若 <code>x</code> 是 <code>−∞</code> 且 <code>y&gt;0</code> 且 <code>y</code> 不是奇数 , 返回结果是 <code>+∞</code>.</li>
+<li>若 <code>x</code> 是 <code>−∞</code> 且 <code>y&lt;0</code> 且 <code>y</code> 是奇数 , 返回结果是 <code>−0</code>.</li>
+<li>若 <code>x</code> 是 <code>−∞</code> 且 <code>y&lt;0</code> 且 <code>y</code> 不是奇数 , 返回结果是 <code>+0</code>.</li>
+<li>若 <code>x</code> 是 <code>+0</code> 且 <code>y&gt;0</code>, 返回结果是 <code>+0</code>.</li>
+<li>若 <code>x</code> 是 <code>+0</code> 且 <code>y&lt;0</code>, 返回结果是 <code>+∞</code>.</li>
+<li>若 <code>x</code> 是 <code>−0</code> 且 <code>y&gt;0</code> 且 <code>y</code> 是奇数, 返回结果是 <code>−0</code>.</li>
+<li>若 <code>x</code> 是 <code>−0</code> 且 <code>y&gt;0</code> 且 <code>y</code> 不是奇数, 返回结果是 <code>+0</code>.</li>
+<li>若 <code>x</code> 是 <code>−0</code> 且 <code>y&lt;0</code> 且 <code>y</code> 是奇数, 返回结果是 <code>−∞</code>.</li>
+<li>若 <code>x</code> 是 <code>−0</code> 且 <code>y&lt;0</code> 且 <code>y</code> 不是奇数, 返回结果是 <code>+∞</code>.</li>
+<li>若 <code>x&lt;0</code> 且 <code>x</code> 是有限的, 且 <code>y</code> 是有限的, 且 <code>y</code> 不是整数 , 返回结果是 <code>NaN</code>.</li>
+</ul>
+<h2 id="7-实现" class="article-heading"><a href="#7-实现" class="headerlink" title="7. 实现"></a>7. 实现<a class="article-anchor" href="#7-实现" aria-hidden="true"></a></h2><ul>
+<li>Babel - <a href="https://babeljs.io/docs/plugins/transform-exponentiation-operator/" target="_blank" rel="noopener">transform-exponentiation-operator</a></li>
+<li><a href="https://code.google.com/p/v8/issues/detail?id=3915" target="_blank" rel="noopener">V8</a> - Chrome 52</li>
+<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1135708" target="_blank" rel="noopener">SpiderMonkey</a> - Firefox 42</li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2019-07-12T02:11:43.303Z" itemprop="dateModified">上次更新：2019-07-12</time>
+                <a href="ecmascript-asyncawait.html" class="article-footer-next" title="异步函数"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概述"><span class="toc-text">1. 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-语法"><span class="toc-text">2. 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-注解"><span class="toc-text">3. 注解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-其它示例"><span class="toc-text">4. 其它示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Math-pow"><span class="toc-text">5. Math.pow()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Math-pow-特殊值处理"><span class="toc-text">6. Math.pow() 特殊值处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-实现"><span class="toc-text">7. 实现</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">ES2016</strong><a href="exponentiation-operator.html" class="sidebar-link current">幂运算符(**)</a><strong class="sidebar-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="sidebar-link">异步函数</a><a href="ecmascript_sharedmem.html" class="sidebar-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="sidebar-link">函数参数的末尾逗号</a><strong class="sidebar-title">ES2018</strong><a href="template-literal-revision.html" class="sidebar-link">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="sidebar-link">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="sidebar-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="sidebar-link">对象展开运算符</a><strong class="sidebar-title">Stage4</strong><a href="async-iteration.html" class="sidebar-link">异步迭代器</a><a href="regexp-lookbehind.html" class="sidebar-link">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="sidebar-link">正则表达式 Unicode 转义</a><strong class="sidebar-title">FAQ</strong><a href="reserved-words.html" class="sidebar-link">保留字</a>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5061364613986259"
+        data-ad-slot="9593020197"
+        data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</aside>
+
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2019 <a href="https://github.com/justjavac/esnext/graphs/contributors" target="_blank">esnext</a><br>
+      本网站内容基于 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank">CC BY-NC-SA 4.0</a> 许可协议发布
+    </div>
+    <div id="footer-links">
+      <a href="https://weibo.com/justjavac" class="footer-link" target="_blank"><i class="fa fa-weibo"></i></a>
+      <a href="https://github.com/justjavac/esnext" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/proposal/exponentiation-operator.html" class="mobile-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="mobile-nav-link">API</a><a href="/news/" class="mobile-nav-link">文章</a><a href="/plugins/" class="mobile-nav-link">插件</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/justjavac/esnext" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">ES2016</strong><a href="exponentiation-operator.html" class="mobile-nav-link current">幂运算符(**)</a><strong class="mobile-nav-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="mobile-nav-link">异步函数</a><a href="ecmascript_sharedmem.html" class="mobile-nav-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="mobile-nav-link">函数参数的末尾逗号</a><strong class="mobile-nav-title">ES2018</strong><a href="template-literal-revision.html" class="mobile-nav-link">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="mobile-nav-link">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="mobile-nav-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="mobile-nav-link">对象展开运算符</a><strong class="mobile-nav-title">Stage4</strong><a href="async-iteration.html" class="mobile-nav-link">异步迭代器</a><a href="regexp-lookbehind.html" class="mobile-nav-link">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="mobile-nav-link">正则表达式 Unicode 转义</a><strong class="mobile-nav-title">FAQ</strong><a href="reserved-words.html" class="mobile-nav-link">保留字</a>
+    
+  </div>
+</nav>
+  <!-- Scripts -->
+<script src="/build/js/main-5d0f56746e.js"></script>
+
+
+</body>
+</html>

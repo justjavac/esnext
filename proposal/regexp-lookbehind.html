@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>正则表达式反向(lookbehind)断言 | esnext | es6 es7 es2017 es2018 es2019</title>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://esnext.justjavac.com/proposal/regexp-lookbehind.html">
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#2f83cd">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/build/css/navy-ae512ba918.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="esnext | es6 es7 es2017 es2018 es2019">
+  <!-- Open Graph -->
+  <meta name="description" content="“正则表达式反向断言” 提案 proposal-regexp-lookbehind 由 Gorkem Yakin, Nozomu Katō, Daniel Ehrenberg 负责，目前已经进入 stage 4，预计会是 ES9(ES2018) 的一部分。 1. 概述断言(Assertion)是一个对当前匹配位置之前或之后的字符的测试， 它不会实际消耗任何字符，所以断言也被称为“非消耗性匹配”或“">
+<meta property="og:type" content="website">
+<meta property="og:title" content="正则表达式反向(lookbehind)断言">
+<meta property="og:url" content="http://esnext.justjavac.com/proposal/regexp-lookbehind.html">
+<meta property="og:site_name" content="esnext | es6 es7 es2017 es2018 es2019">
+<meta property="og:description" content="“正则表达式反向断言” 提案 proposal-regexp-lookbehind 由 Gorkem Yakin, Nozomu Katō, Daniel Ehrenberg 负责，目前已经进入 stage 4，预计会是 ES9(ES2018) 的一部分。 1. 概述断言(Assertion)是一个对当前匹配位置之前或之后的字符的测试， 它不会实际消耗任何字符，所以断言也被称为“非消耗性匹配”或“">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-12T02:11:43.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式反向(lookbehind)断言">
+<meta name="twitter:description" content="“正则表达式反向断言” 提案 proposal-regexp-lookbehind 由 Gorkem Yakin, Nozomu Katō, Daniel Ehrenberg 负责，目前已经进入 stage 4，预计会是 ES9(ES2018) 的一部分。 1. 概述断言(Assertion)是一个对当前匹配位置之前或之后的字符的测试， 它不会实际消耗任何字符，所以断言也被称为“非消耗性匹配”或“">
+<meta name="twitter:site" content="justjavac">
+ <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1f336f31cd6db48ca0ad520a9c7e4c57";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/proposal/exponentiation-operator.html" class="main-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="main-nav-link">API</a><a href="/news/" class="main-nav-link">文章</a><a href="/plugins/" class="main-nav-link">插件</a>
+      <a target="_blank" href="https://github.com/justjavac/esnext" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">正则表达式反向(lookbehind)断言</h1>
+                <a href="https://github.com/justjavac/esnext/edit/master/source/proposal/regexp-lookbehind.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>“正则表达式反向断言” 提案 <a href="https://github.com/tc39/proposal-regexp-lookbehind" target="_blank" rel="noopener">proposal-regexp-lookbehind</a> 由 Gorkem Yakin, Nozomu Katō, Daniel Ehrenberg 负责，目前已经进入 stage 4，预计会是 ES9(ES2018) 的一部分。</p>
+<h2 id="1-概述" class="article-heading"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述<a class="article-anchor" href="#1-概述" aria-hidden="true"></a></h2><p>断言(Assertion)是一个对当前匹配位置之前或之后的字符的测试， 它不会实际消耗任何字符，所以断言也被称为“非消耗性匹配”或“非获取匹配”。</p>
+<p>正则表达式的断言一共有 4 种形式：</p>
+<ul>
+<li><code>(?=pattern)</code> 零宽正向肯定断言(zero-width positive lookahead assertion) </li>
+<li><code>(?!pattern)</code> 零宽正向否定断言(zero-width negative lookahead assertion) </li>
+<li><code>(?&lt;=pattern)</code> 零宽反向肯定断言(zero-width positive lookbehind assertion) </li>
+<li><code>(?&lt;!pattern)</code> 零宽反向否定断言(zero-width negative lookbehind assertion) </li>
+</ul>
+<p>这里面的 pattern 是一个正则表达式。</p>
+<p>lookahead 和 lookbehind 通过被翻译为：</p>
+<ul>
+<li>正向 负向</li>
+<li>前向 后向</li>
+<li>正向 反向</li>
+<li>前瞻 后瞻</li>
+<li>……</li>
+</ul>
+<p>本文档使用“正向”、“反向”。</p>
+<h2 id="2-Lookahead-assertions-正向断言" class="article-heading"><a href="#2-Lookahead-assertions-正向断言" class="headerlink" title="2. Lookahead assertions 正向断言"></a>2. Lookahead assertions 正向断言<a class="article-anchor" href="#2-Lookahead-assertions-正向断言" aria-hidden="true"></a></h2><p>在当前的 JavaScript 正则表达式版本中，只支持正向断言。</p>
+<p>正向断言的意思是：当前位置后面的字符串应该满足断言，但是并不捕获，仅此而已。</p>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/just(?=java)/</span>;</span><br></pre></td></tr></table></figure>
+<p>这个正则表达式可以匹配 <code>&quot;justjava&quot;</code>，但是正则表达式匹配到的字符串不包含 <code>&quot;java&quot;</code>。（这个正则表达式可以匹配 <code>&quot;justjavac&quot;</code> 中的 <code>&quot;just&quot;</code>，注意，匹配的结果是 <code>just</code>，并不是 <code>&quot;justjavac&quot;</code>）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> match1 = regex.exec(<span class="string">'justjavac'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(match1[<span class="number">0</span>]);   <span class="comment">// 结果是 just</span></span><br></pre></td></tr></table></figure>
+<p>但是如果这个字符串没有包含 <code>&quot;java&quot;</code>，那么这个正则表达式无法成功匹配：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> match2 = regex.exec(<span class="string">'justphp'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(match2);      <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+<p>如果使用否定断言则正好相反:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/just(?!java)/</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> match1 = regex.exec(<span class="string">'justjavac'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(match1);    <span class="comment">// null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> match2 = regex.exec(<span class="string">'justphp'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(match2[<span class="number">0</span>]); <span class="comment">// 结果是 just</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-反向断言" class="article-heading"><a href="#3-反向断言" class="headerlink" title="3. 反向断言"></a>3. 反向断言<a class="article-anchor" href="#3-反向断言" aria-hidden="true"></a></h2><p>反向断言和正向断言的行为一样，只是方向相反。</p>
+<p>反向肯定断言使用语法 <code>(?&lt;=...)</code>。</p>
+<p>比如我们想获取所有的人民币金额，但是不获取其它货币（比如美元）：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/(?&lt;=￥)\d+(\.\d*)?/</span>;</span><br><span class="line">regex.test(<span class="string">'￥1.9'</span>);     <span class="comment">// true</span></span><br><span class="line">regex.test(<span class="string">'$1.2'</span>);      <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>反向否定断言使用语法 <code>(?&lt;!...)</code>，和肯定断言正好相反：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/(?&lt;!￥)\d+(\.\d*)?/</span>;</span><br><span class="line">regex.test(<span class="string">'￥1.9'</span>);     <span class="comment">// false???</span></span><br><span class="line">regex.test(<span class="string">'$1.2'</span>);      <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，<code>regex.test(&#39;￥1.9&#39;)</code> 的结果是 <code>true</code>，并不是我们认为的 <code>false</code>。</p>
+<p>这不是反向断言的一个例外，而是这段代码的一个小 bug。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/(?&lt;!￥)\d+(\.\d*)?/</span>;</span><br><span class="line">regex.exec(<span class="string">'￥1.9'</span>);</span><br><span class="line"><span class="comment">// ["9", undefined, index: 3, input: "￥1.9", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+<p>这段正则表达式匹配到了 <code>&#39;￥1.9&#39;</code> 里面的 <code>9</code>。因为 <code>9</code> 前面是 <code>.</code> 而不是 <code>￥</code>，完全符合反向否定断言规则。</p>
+<h2 id="4-组合" class="article-heading"><a href="#4-组合" class="headerlink" title="4. 组合"></a>4. 组合<a class="article-anchor" href="#4-组合" aria-hidden="true"></a></h2><p>多个断言(任意顺序)可以同时出现。 </p>
+<p>比如 <code>(?&lt;=\d{3})(?&lt;!999)foo</code> 匹配前面有三个数字但不是 <code>999</code> 的字符串 <code>foo</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/(?&lt;=\d&#123;3&#125;)(?&lt;!999)foo/</span>;</span><br><span class="line">regex.test(<span class="string">'123foo'</span>);    <span class="comment">// true</span></span><br><span class="line">regex.test(<span class="string">'1239foo'</span>);   <span class="comment">// true</span></span><br><span class="line">regex.test(<span class="string">'12399foo'</span>);  <span class="comment">// true</span></span><br><span class="line">regex.test(<span class="string">'123999foo'</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>注意，每个断言独立应用到对目标字符串该点的匹配。首先它会检查前面的三位都是数字，然后检查这三位不是 <code>999</code>。 这个模式不能匹配 <code>foo</code> 前面有三位数字然后紧跟 3 位非 <code>999</code> 共 6 个字符的字符串，比如， 它不匹配 <code>123abcfoo</code>。 匹配 <code>123abcfoo</code> 这个字符串的模式可以是 <code>(?&lt;=\d{3}...)(?&lt;!999)foo</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> regex = <span class="regexp">/(?&lt;=\d&#123;3&#125;...)(?&lt;!999)foo/</span>;</span><br><span class="line">regex.test(<span class="string">'123abcfoo'</span>);    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>这种情况下，第一个断言查看(当前匹配点)前面的 6 个字符，检查前三个是数字， 然后第二个断言检查(当前匹配点)前三个字符不是 <code>999</code>。</p>
+<p>断言可以以任意复杂度嵌套。</p>
+<p>比如 <code>(?&lt;=(?&lt;!foo)bar)baz</code> 匹配前面有 <code>bar</code> 但是 <code>bar</code> 前面没有 <code>foo</code> 的 <code>baz</code>。 </p>
+<p>另外一个模式 <code>(?&lt;=\d{3}...(?&lt;!999))foo</code> 则匹配前面有三个数字字符紧跟 3 个不是 <code>999</code> 的任意字符的 <code>foo</code>。</p>
+<h2 id="5-细节" class="article-heading"><a href="#5-细节" class="headerlink" title="5. 细节"></a>5. 细节<a class="article-anchor" href="#5-细节" aria-hidden="true"></a></h2><h3 id="5-1-从右向左的贪婪匹配" class="article-heading"><a href="#5-1-从右向左的贪婪匹配" class="headerlink" title="5.1 从右向左的贪婪匹配"></a>5.1 从右向左的贪婪匹配<a class="article-anchor" href="#5-1-从右向左的贪婪匹配" aria-hidden="true"></a></h3><p>如果组中有贪婪匹配的子模式，则在反向断言中的捕获组将具有不同的值。</p>
+<p>当在反向断言中，右侧的组将捕获大多数字符，而不是左侧的组。</p>
+<p>当模式 <code>/(?&lt;=(\d+)(\d+))$/</code> 匹配 <code>1053</code> 时，第 1 个组捕获 <code>&#39;1&#39;</code>，第 2 个组捕获 <code>&#39;053&#39;</code>。</p>
+<p>当普通模式 <code>/^(\d+)(\d+)/</code> 匹配 <code>1053</code> 时，第 1 个组捕获 <code>&#39;105&#39;</code>，第 2 个组捕获 <code>&#39;3&#39;</code>。</p>
+<h3 id="5-2-捕获组的索引" class="article-heading"><a href="#5-2-捕获组的索引" class="headerlink" title="5.2 捕获组的索引"></a>5.2 捕获组的索引<a class="article-anchor" href="#5-2-捕获组的索引" aria-hidden="true"></a></h3><p>在反向断言匹配中，组的次序是从左到右的。</p>
+<p>当模式 <code>/(?&lt;=(\d+)(\d+))$/</code> 匹配 <code>1053</code> 时，<code>match[1]</code> 是 <code>&quot;1&quot;</code>，<code>match[2]</code> 是 <code>&quot;053&quot;</code>。</p>
+<h3 id="5-3-引用捕获组" class="article-heading"><a href="#5-3-引用捕获组" class="headerlink" title="5.3 引用捕获组"></a>5.3 引用捕获组<a class="article-anchor" href="#5-3-引用捕获组" aria-hidden="true"></a></h3><p>只有当捕获组被执行后，我们才能对他进行引用。</p>
+<p>例如在正则表达式 <code>/(?&lt;=(.)\1)/</code> 中，<code>\1</code> 的值始终是空字符串，正确的写法是 <code>/(?&lt;=\1(.))/</code>。</p>
+<h2 id="6-实现" class="article-heading"><a href="#6-实现" class="headerlink" title="6 实现"></a>6 实现<a class="article-anchor" href="#6-实现" aria-hidden="true"></a></h2><ul>
+<li><a href="https://bugs.chromium.org/p/v8/issues/detail?id=4545" target="_blank" rel="noopener">V8</a>, shipping in Chrome 62</li>
+<li><a href="https://github.com/Moddable-OpenSource/moddable/blob/public/xs/sources/xsre.c" target="_blank" rel="noopener">XS</a>, in <a href="http://blog.moddable.tech/blog/january-17-2017-big-update-to-moddable-sdk/" target="_blank" rel="noopener">January 17, 2018 update</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2019-07-12T02:11:43.304Z" itemprop="dateModified">上次更新：2019-07-12</time>
+                <a href="async-iteration.html" class="article-footer-prev" title="异步迭代器"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="regexp-unicode-property-escapes.html" class="article-footer-next" title="正则表达式 Unicode 转义"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概述"><span class="toc-text">1. 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Lookahead-assertions-正向断言"><span class="toc-text">2. Lookahead assertions 正向断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-反向断言"><span class="toc-text">3. 反向断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-组合"><span class="toc-text">4. 组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-细节"><span class="toc-text">5. 细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-从右向左的贪婪匹配"><span class="toc-text">5.1 从右向左的贪婪匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-捕获组的索引"><span class="toc-text">5.2 捕获组的索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-引用捕获组"><span class="toc-text">5.3 引用捕获组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-实现"><span class="toc-text">6 实现</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">ES2016</strong><a href="exponentiation-operator.html" class="sidebar-link">幂运算符(**)</a><strong class="sidebar-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="sidebar-link">异步函数</a><a href="ecmascript_sharedmem.html" class="sidebar-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="sidebar-link">函数参数的末尾逗号</a><strong class="sidebar-title">ES2018</strong><a href="template-literal-revision.html" class="sidebar-link">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="sidebar-link">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="sidebar-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="sidebar-link">对象展开运算符</a><strong class="sidebar-title">Stage4</strong><a href="async-iteration.html" class="sidebar-link">异步迭代器</a><a href="regexp-lookbehind.html" class="sidebar-link current">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="sidebar-link">正则表达式 Unicode 转义</a><strong class="sidebar-title">FAQ</strong><a href="reserved-words.html" class="sidebar-link">保留字</a>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5061364613986259"
+        data-ad-slot="9593020197"
+        data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</aside>
+
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2019 <a href="https://github.com/justjavac/esnext/graphs/contributors" target="_blank">esnext</a><br>
+      本网站内容基于 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank">CC BY-NC-SA 4.0</a> 许可协议发布
+    </div>
+    <div id="footer-links">
+      <a href="https://weibo.com/justjavac" class="footer-link" target="_blank"><i class="fa fa-weibo"></i></a>
+      <a href="https://github.com/justjavac/esnext" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/proposal/exponentiation-operator.html" class="mobile-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="mobile-nav-link">API</a><a href="/news/" class="mobile-nav-link">文章</a><a href="/plugins/" class="mobile-nav-link">插件</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/justjavac/esnext" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">ES2016</strong><a href="exponentiation-operator.html" class="mobile-nav-link">幂运算符(**)</a><strong class="mobile-nav-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="mobile-nav-link">异步函数</a><a href="ecmascript_sharedmem.html" class="mobile-nav-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="mobile-nav-link">函数参数的末尾逗号</a><strong class="mobile-nav-title">ES2018</strong><a href="template-literal-revision.html" class="mobile-nav-link">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="mobile-nav-link">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="mobile-nav-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="mobile-nav-link">对象展开运算符</a><strong class="mobile-nav-title">Stage4</strong><a href="async-iteration.html" class="mobile-nav-link">异步迭代器</a><a href="regexp-lookbehind.html" class="mobile-nav-link current">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="mobile-nav-link">正则表达式 Unicode 转义</a><strong class="mobile-nav-title">FAQ</strong><a href="reserved-words.html" class="mobile-nav-link">保留字</a>
+    
+  </div>
+</nav>
+  <!-- Scripts -->
+<script src="/build/js/main-5d0f56746e.js"></script>
+
+
+</body>
+</html>

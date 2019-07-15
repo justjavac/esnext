@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>JavaScript、TC39、ECMAScript 以及 es20xx | esnext | es6 es7 es2017 es2018 es2019</title>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://esnext.justjavac.com/news/2018/02/08/tc39-process-document/index.html">
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#2f83cd">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/build/css/navy-ae512ba918.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="esnext | es6 es7 es2017 es2018 es2019">
+  <!-- Open Graph -->
+  <meta name="description" content="ECMAScriptECMAScript 是由 ECMA-262 标准化的脚本语言的名称。 由于 JavaScript® ECMA-262 无法使用 JavaScript 这个名字，因此在指定规范的使用使用了 ECMAScript。 从 2009 年发布的 ES5 到 2015 年发布的 ES6 共经历了 6 年，语言的变化非常大，引入了很多新的语法和特性。为了避免剧烈的变动，从 ES7(2016">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript、TC39、ECMAScript 以及 es20xx">
+<meta property="og:url" content="http://esnext.justjavac.com/news/2018/02/08/tc39-process-document/index.html">
+<meta property="og:site_name" content="esnext | es6 es7 es2017 es2018 es2019">
+<meta property="og:description" content="ECMAScriptECMAScript 是由 ECMA-262 标准化的脚本语言的名称。 由于 JavaScript® ECMA-262 无法使用 JavaScript 这个名字，因此在指定规范的使用使用了 ECMAScript。 从 2009 年发布的 ES5 到 2015 年发布的 ES6 共经历了 6 年，语言的变化非常大，引入了很多新的语法和特性。为了避免剧烈的变动，从 ES7(2016">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-12T02:11:43.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript、TC39、ECMAScript 以及 es20xx">
+<meta name="twitter:description" content="ECMAScriptECMAScript 是由 ECMA-262 标准化的脚本语言的名称。 由于 JavaScript® ECMA-262 无法使用 JavaScript 这个名字，因此在指定规范的使用使用了 ECMAScript。 从 2009 年发布的 ES5 到 2015 年发布的 ES6 共经历了 6 年，语言的变化非常大，引入了很多新的语法和特性。为了避免剧烈的变动，从 ES7(2016">
+<meta name="twitter:site" content="justjavac">
+ <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1f336f31cd6db48ca0ad520a9c7e4c57";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/proposal/exponentiation-operator.html" class="main-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="main-nav-link">API</a><a href="/news/" class="main-nav-link">文章</a><a href="/plugins/" class="main-nav-link">插件</a>
+      <a target="_blank" href="https://github.com/justjavac/esnext" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1 class="article-title" itemprop="name">JavaScript、TC39、ECMAScript 以及 es20xx</h1>
+    
+    <a href="/news/2018/02/08/tc39-process-document/" class="article-date"><time datetime="2018-02-07T16:00:00.000Z">2018-02-08</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <h2 id="ECMAScript" class="article-heading"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript<a class="article-anchor" href="#ECMAScript" aria-hidden="true"></a></h2><p>ECMAScript 是由 ECMA-262 标准化的脚本语言的名称。</p>
+<p>由于 JavaScript® ECMA-262 无法使用 JavaScript 这个名字，因此在指定规范的使用使用了 ECMAScript。</p>
+<p>从 2009 年发布的 ES5 到 2015 年发布的 ES6 共经历了 6 年，语言的变化非常大，引入了很多新的语法和特性。为了避免剧烈的变动，从 ES7(2016) 开始，版本发布会变得更加频繁，每次的变动也更小。每年会发布一个新版本，其中包含所有已经完成的特性。</p>
+<h2 id="TC39" class="article-heading"><a href="#TC39" class="headerlink" title="TC39"></a>TC39<a class="article-anchor" href="#TC39" aria-hidden="true"></a></h2><p>TC39 指的是技术委员会（Technical Committee）第 39 号。委员会负责改进 ECMAScript 编程语言并编写规范。会议的每一项决议必须大部分人赞同，并且没有人强烈反对才可以通过。对规范进行修改的一般过程如下。</p>
+<h2 id="Stage" class="article-heading"><a href="#Stage" class="headerlink" title="Stage"></a>Stage<a class="article-anchor" href="#Stage" aria-hidden="true"></a></h2><p>每一项新特性，要最终纳入 ECMAScript 规范中，TC39 拟定了一个处理过程，称为 TC39 process。其中共包含 5 个阶段，Stage 0 ~ Stage 4。</p>
+<p>TC39 遵循的原则是：分阶段加入不同的语言特性。一旦提案成熟，TC39 会根据提案中的变动来更新规范。直到最近，TC39 依然依赖基于 Microsoft Word 的比较传统的工作流程。但 ES3 出来之后，为了使其达到规范，总共花了十年时间，几乎没有任何改变。之后，ES6 又花了四年才能实现。</p>
+<p>自 ES6 出来之后，他们精简了提案的修订过程，以满足现代化开发的需求。新流程使用 HTML 的超集来格式化提案。他们使用 GitHub pull requests，这有助于增加社区的参与，并且提出的提案数量也增加了。这个规范现在是一个 living standard，这意味着提案会更快，而且我们也不用等待新版本的规范出来。</p>
+<p>新流程涉及五个不同的 Stage。一个提案越成熟，越有可能最终将其纳入规范。</p>
+<h3 id="Stage-0-strawman" class="article-heading"><a href="#Stage-0-strawman" class="headerlink" title="Stage 0: strawman"></a>Stage 0: strawman<a class="article-anchor" href="#Stage-0-strawman" aria-hidden="true"></a></h3><p>任何尚未提交作为正式提案的讨论、想法变更或者补充都被认为是第 0 阶段的“稻草人（strawman）”提案。</p>
+<p>任何 TC39 成员，或者注册为 TC39 贡献者的会员，都可以提交 Stage 0 的提案。</p>
+<h3 id="Stage-1-proposal" class="article-heading"><a href="#Stage-1-proposal" class="headerlink" title="Stage 1: proposal"></a>Stage 1: proposal<a class="article-anchor" href="#Stage-1-proposal" aria-hidden="true"></a></h3><p>该阶段产生一个正式的提案。</p>
+<ul>
+<li>确定一个带头人来负责该提案，带头人(或者联合带头人)必须是 TC39 的成员。</li>
+<li>描述清楚要解决的问题，解决方案中必须包含例子，API(high level AP) 以及关于相关的语义和算法。</li>
+<li>潜在问题也应该指出来，例如与其他特性的关系，实现它所面临的挑战。</li>
+<li>polyfill 和 demo 也是必要的。</li>
+</ul>
+<h3 id="Stage-2-draft" class="article-heading"><a href="#Stage-2-draft" class="headerlink" title="Stage 2: draft"></a>Stage 2: draft<a class="article-anchor" href="#Stage-2-draft" aria-hidden="true"></a></h3><p>Stage 2 的提案应提供规范初稿。</p>
+<p>此时，语言的实现者开始观察 runtime 的具体实现是否合理。该实现可以使用 polyfill 的方式，以便使代码可在 runtime 中的行为负责规范的定义。javascript 引擎的实现为提案提供了原生支持。或者可以 Babel 这样的编译时编译器来支持。</p>
+<p>本草案与最终标准中包含的特性不会有太大差别。草案之后，原则上只接受增量修改。</p>
+<ul>
+<li>草案中包含新增特性语法和语义的，尽可能的完善的形式说明，允许包含一些待办事项或者占位符。</li>
+<li>必须包含 2 个实验性的具体实现，其中一个可以是用转译器实现的，例如 Babel。</li>
+</ul>
+<h3 id="Stage-3-candidate" class="article-heading"><a href="#Stage-3-candidate" class="headerlink" title="Stage 3: candidate"></a>Stage 3: candidate<a class="article-anchor" href="#Stage-3-candidate" aria-hidden="true"></a></h3><p>Stage 3 提案是建议的候选提案。在这个高级阶段，规范的编辑人员和评审人员必须在最终规范上签字。</p>
+<p>Stage 3 的提案不会有太大的改变，在对外发布之前只是修正一些问题。</p>
+<ul>
+<li>规范文档必须是完整的，评审人和 ECMAScript 的编辑要在规范上签字。</li>
+<li>至少要有 2 个符合规范的具体实现。</li>
+</ul>
+<h3 id="Stage-4-finished" class="article-heading"><a href="#Stage-4-finished" class="headerlink" title="Stage 4: finished"></a>Stage 4: finished<a class="article-anchor" href="#Stage-4-finished" aria-hidden="true"></a></h3><p>最后，当规范的实现至少通过两个验收测试时，提案进入 Stage 4。</p>
+<p>进入 Stage 4 的提案将包含在 ECMAScript 的下一个修订版中。</p>
+<ul>
+<li>通过 Test 262 的验收测试。</li>
+<li>有 2 个通过测试的实现，以获取使用过程中的重要实践经验。</li>
+<li>ECMAScript 的编辑必须规范上的签字。</li>
+</ul>
+<h2 id="规格修订和调度" class="article-heading"><a href="#规格修订和调度" class="headerlink" title="规格修订和调度"></a>规格修订和调度<a class="article-anchor" href="#规格修订和调度" aria-hidden="true"></a></h2><p>TC39 打算每年七月向 ECMA 大会提交一份规范批准。以下是生成新规格修订的大致时间表：</p>
+<ul>
+<li>2月1日：候选草案被生成。</li>
+<li>2月-3月：60 天时间进行投票决定草案的去留。</li>
+<li>3月 TC39 会议：第 4 阶段的提案被纳入，最终的语义被批准，从 master 新建一个 spec 的分支版本。只有编辑性的改变才能被接受。</li>
+<li>4月-6月：ECMA CC 和 ECMA GA 审查期。</li>
+<li>7月：由 ECMA 大会批准新标准</li>
+</ul>
+<h2 id="参考资料" class="article-heading"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料<a class="article-anchor" href="#参考资料" aria-hidden="true"></a></h2><ul>
+<li><a href="https://tc39.github.io/process-document/" target="_blank" rel="noopener">The TC39 Process</a></li>
+<li><a href="https://segmentfault.com/a/1190000010008098" target="_blank" rel="noopener">TC39，ECMAScript 和 JavaScript 的未来</a></li>
+<li><a href="https://tc39.github.io/ecma262/" target="_blank" rel="noopener">Status, process, and documents for ECMA262</a></li>
+<li><a href="https://github.com/tc39/test262" target="_blank" rel="noopener">Official ECMAScript Conformance Test Suite</a></li>
+</ul>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5061364613986259"
+        data-ad-slot="9593020197"
+        data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  
+</article>
+
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2019 <a href="https://github.com/justjavac/esnext/graphs/contributors" target="_blank">esnext</a><br>
+      本网站内容基于 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank">CC BY-NC-SA 4.0</a> 许可协议发布
+    </div>
+    <div id="footer-links">
+      <a href="https://weibo.com/justjavac" class="footer-link" target="_blank"><i class="fa fa-weibo"></i></a>
+      <a href="https://github.com/justjavac/esnext" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/proposal/exponentiation-operator.html" class="mobile-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="mobile-nav-link">API</a><a href="/news/" class="mobile-nav-link">文章</a><a href="/plugins/" class="mobile-nav-link">插件</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/justjavac/esnext" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+  <!-- Scripts -->
+<script src="/build/js/main-5d0f56746e.js"></script>
+
+
+</body>
+</html>

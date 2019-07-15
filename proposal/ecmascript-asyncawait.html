@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>Async Functions 异步函数 | esnext | es6 es7 es2017 es2018 es2019</title>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://esnext.justjavac.com/proposal/ecmascript-asyncawait.html">
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#2f83cd">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/build/css/navy-ae512ba918.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="esnext | es6 es7 es2017 es2018 es2019">
+  <!-- Open Graph -->
+  <meta name="description" content="敬请期待。。。 FAQ如何判断一个函数是异步的： function isAsync(fn) &amp;#123;   return fn.constructor.name === &apos;AsyncFunction&apos;;&amp;#125; 相关链接 Async Functions for ECMAScript V8 Async function design doc">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Async Functions 异步函数">
+<meta property="og:url" content="http://esnext.justjavac.com/proposal/ecmascript-asyncawait.html">
+<meta property="og:site_name" content="esnext | es6 es7 es2017 es2018 es2019">
+<meta property="og:description" content="敬请期待。。。 FAQ如何判断一个函数是异步的： function isAsync(fn) &amp;#123;   return fn.constructor.name === &apos;AsyncFunction&apos;;&amp;#125; 相关链接 Async Functions for ECMAScript V8 Async function design doc">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-12T02:11:43.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Async Functions 异步函数">
+<meta name="twitter:description" content="敬请期待。。。 FAQ如何判断一个函数是异步的： function isAsync(fn) &amp;#123;   return fn.constructor.name === &apos;AsyncFunction&apos;;&amp;#125; 相关链接 Async Functions for ECMAScript V8 Async function design doc">
+<meta name="twitter:site" content="justjavac">
+ <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1f336f31cd6db48ca0ad520a9c7e4c57";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/proposal/exponentiation-operator.html" class="main-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="main-nav-link">API</a><a href="/news/" class="main-nav-link">文章</a><a href="/plugins/" class="main-nav-link">插件</a>
+      <a target="_blank" href="https://github.com/justjavac/esnext" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Async Functions 异步函数</h1>
+                <a href="https://github.com/justjavac/esnext/edit/master/source/proposal/ecmascript-asyncawait.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>敬请期待。。。</p>
+<h2 id="FAQ" class="article-heading"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ<a class="article-anchor" href="#FAQ" aria-hidden="true"></a></h2><p>如何判断一个函数是异步的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isAsync</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> fn.constructor.name === <span class="string">'AsyncFunction'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="相关链接" class="article-heading"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接<a class="article-anchor" href="#相关链接" aria-hidden="true"></a></h2><ul>
+<li><a href="https://github.com/tc39/ecmascript-asyncawait" target="_blank" rel="noopener">Async Functions for ECMAScript</a></li>
+<li><a href="https://docs.google.com/document/d/1K38ct2dsxG_9OfmgErvFld4MPDC4Wkr8tPuqmSWu_3Y/edit#heading=h.4yqp6a2he6eb" target="_blank" rel="noopener">V8 Async function design doc</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2019-07-12T02:11:43.302Z" itemprop="dateModified">上次更新：2019-07-12</time>
+                <a href="exponentiation-operator.html" class="article-footer-prev" title="幂运算符(**)"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="ecmascript_sharedmem.html" class="article-footer-next" title="共享内存和原子操作"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FAQ"><span class="toc-text">FAQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关链接"><span class="toc-text">相关链接</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">ES2016</strong><a href="exponentiation-operator.html" class="sidebar-link">幂运算符(**)</a><strong class="sidebar-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="sidebar-link current">异步函数</a><a href="ecmascript_sharedmem.html" class="sidebar-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="sidebar-link">函数参数的末尾逗号</a><strong class="sidebar-title">ES2018</strong><a href="template-literal-revision.html" class="sidebar-link">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="sidebar-link">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="sidebar-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="sidebar-link">对象展开运算符</a><strong class="sidebar-title">Stage4</strong><a href="async-iteration.html" class="sidebar-link">异步迭代器</a><a href="regexp-lookbehind.html" class="sidebar-link">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="sidebar-link">正则表达式 Unicode 转义</a><strong class="sidebar-title">FAQ</strong><a href="reserved-words.html" class="sidebar-link">保留字</a>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5061364613986259"
+        data-ad-slot="9593020197"
+        data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</aside>
+
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2019 <a href="https://github.com/justjavac/esnext/graphs/contributors" target="_blank">esnext</a><br>
+      本网站内容基于 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank">CC BY-NC-SA 4.0</a> 许可协议发布
+    </div>
+    <div id="footer-links">
+      <a href="https://weibo.com/justjavac" class="footer-link" target="_blank"><i class="fa fa-weibo"></i></a>
+      <a href="https://github.com/justjavac/esnext" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/proposal/exponentiation-operator.html" class="mobile-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="mobile-nav-link">API</a><a href="/news/" class="mobile-nav-link">文章</a><a href="/plugins/" class="mobile-nav-link">插件</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/justjavac/esnext" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">ES2016</strong><a href="exponentiation-operator.html" class="mobile-nav-link">幂运算符(**)</a><strong class="mobile-nav-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="mobile-nav-link current">异步函数</a><a href="ecmascript_sharedmem.html" class="mobile-nav-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="mobile-nav-link">函数参数的末尾逗号</a><strong class="mobile-nav-title">ES2018</strong><a href="template-literal-revision.html" class="mobile-nav-link">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="mobile-nav-link">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="mobile-nav-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="mobile-nav-link">对象展开运算符</a><strong class="mobile-nav-title">Stage4</strong><a href="async-iteration.html" class="mobile-nav-link">异步迭代器</a><a href="regexp-lookbehind.html" class="mobile-nav-link">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="mobile-nav-link">正则表达式 Unicode 转义</a><strong class="mobile-nav-title">FAQ</strong><a href="reserved-words.html" class="mobile-nav-link">保留字</a>
+    
+  </div>
+</nav>
+  <!-- Scripts -->
+<script src="/build/js/main-5d0f56746e.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>正则表达式 s/dotAll 模式 | esnext | es6 es7 es2017 es2018 es2019</title>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://esnext.justjavac.com/proposal/regexp-dotall-flag.html">
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#2f83cd">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/build/css/navy-ae512ba918.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="esnext | es6 es7 es2017 es2018 es2019">
+  <!-- Open Graph -->
+  <meta name="description" content="“正则表达式的 s (dotAll) flag” 提案 proposal-regexp-dotall-flag 由 Mathias Bynens 负责，目前已经进入 stage 4，并将成为 ES9(ES2018) 的一部分。 1. 概述在 JavaScript 正则表达式中 . 用来匹配任何单个字符。但是有 2 个例外： 1.1 多字节 emoji 字符let regex = /^.$/;reg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="正则表达式 s&#x2F;dotAll 模式">
+<meta property="og:url" content="http://esnext.justjavac.com/proposal/regexp-dotall-flag.html">
+<meta property="og:site_name" content="esnext | es6 es7 es2017 es2018 es2019">
+<meta property="og:description" content="“正则表达式的 s (dotAll) flag” 提案 proposal-regexp-dotall-flag 由 Mathias Bynens 负责，目前已经进入 stage 4，并将成为 ES9(ES2018) 的一部分。 1. 概述在 JavaScript 正则表达式中 . 用来匹配任何单个字符。但是有 2 个例外： 1.1 多字节 emoji 字符let regex = /^.$/;reg">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-12T02:11:43.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式 s&#x2F;dotAll 模式">
+<meta name="twitter:description" content="“正则表达式的 s (dotAll) flag” 提案 proposal-regexp-dotall-flag 由 Mathias Bynens 负责，目前已经进入 stage 4，并将成为 ES9(ES2018) 的一部分。 1. 概述在 JavaScript 正则表达式中 . 用来匹配任何单个字符。但是有 2 个例外： 1.1 多字节 emoji 字符let regex = /^.$/;reg">
+<meta name="twitter:site" content="justjavac">
+ <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1f336f31cd6db48ca0ad520a9c7e4c57";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/proposal/exponentiation-operator.html" class="main-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="main-nav-link">API</a><a href="/news/" class="main-nav-link">文章</a><a href="/plugins/" class="main-nav-link">插件</a>
+      <a target="_blank" href="https://github.com/justjavac/esnext" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">正则表达式 s/dotAll 模式</h1>
+                <a href="https://github.com/justjavac/esnext/edit/master/source/proposal/regexp-dotall-flag.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>“正则表达式的 <code>s</code> (dotAll) flag” 提案 <a href="https://github.com/tc39/proposal-regexp-dotall-flag" target="_blank" rel="noopener">proposal-regexp-dotall-flag</a> 由 Mathias Bynens 负责，目前已经进入 stage 4，并将成为 ES9(ES2018) 的一部分。</p>
+<h2 id="1-概述" class="article-heading"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述<a class="article-anchor" href="#1-概述" aria-hidden="true"></a></h2><p>在 JavaScript 正则表达式中 <code>.</code> 用来匹配任何单个字符。但是有 2 个例外：</p>
+<h3 id="1-1-多字节-emoji-字符" class="article-heading"><a href="#1-1-多字节-emoji-字符" class="headerlink" title="1.1 多字节 emoji 字符"></a>1.1 多字节 emoji 字符<a class="article-anchor" href="#1-1-多字节-emoji-字符" aria-hidden="true"></a></h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> regex = <span class="regexp">/^.$/</span>;</span><br><span class="line">regex.test(<span class="string">'😀'</span>);   <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>我们可以通过设置 <code>u</code> 标志来解决，<code>u</code> 的含义是 unicode：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> regex = <span class="regexp">/^.$/u</span>;</span><br><span class="line">regex.test(<span class="string">'😀'</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-行终结符-line-terminator-characters" class="article-heading"><a href="#1-2-行终结符-line-terminator-characters" class="headerlink" title="1.2 行终结符(line terminator characters)"></a>1.2 行终结符(line terminator characters)<a class="article-anchor" href="#1-2-行终结符-line-terminator-characters" aria-hidden="true"></a></h3><p>行终结符包含：</p>
+<ul>
+<li>U+000A LINE FEED (LF) (<code>\n</code>) - 换行</li>
+<li>U+000D CARRIAGE RETURN (CR) (<code>\r</code>) - 回车</li>
+<li>U+2028 LINE SEPARATOR - 行分隔符</li>
+<li>U+2029 PARAGRAPH SEPARATOR - 段分隔符</li>
+</ul>
+<p>还有一些其它字符，也可以作为一行的开始：</p>
+<ul>
+<li>U+000B VERTICAL TAB (<code>\v</code>)</li>
+<li>U+000C FORM FEED (<code>\f</code>)</li>
+<li>U+0085 NEXT LINE</li>
+</ul>
+<p>目前 JavaScript 正则表达式的 <code>.</code> 可以匹配其中的一部分：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> regex = <span class="regexp">/./</span>;</span><br><span class="line"></span><br><span class="line">regex.test(<span class="string">'\n'</span>);       <span class="comment">// false</span></span><br><span class="line">regex.test(<span class="string">'\r'</span>);       <span class="comment">// false</span></span><br><span class="line">regex.test(<span class="string">'\u&#123;2028&#125;'</span>); <span class="comment">// false</span></span><br><span class="line">regex.test(<span class="string">'\u&#123;2029&#125;'</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">regex.test(<span class="string">'\v'</span>);       <span class="comment">// true</span></span><br><span class="line">regex.test(<span class="string">'\f'</span>);       <span class="comment">// true</span></span><br><span class="line">regex.test(<span class="string">'\u&#123;0085&#125;'</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>在正则表达式中，用于表示字符串开头和字符串结尾的元字符是 <code>^</code> 和 <code>$</code>, 因此一个变通的方式是使用 <code>^</code> 来匹配。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/foo.bar/.test(<span class="string">'foo\nbar'</span>);     <span class="comment">// false</span></span><br><span class="line">/foo[^]bar/.test(<span class="string">'foo\nbar'</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>或者使用 <code>\s</code> 来匹配空白字符：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/foo.bar/.test(<span class="string">'foo\nbar'</span>);     <span class="comment">// false</span></span><br><span class="line">/foo[\s]bar/.test(<span class="string">'foo\nbar'</span>);   <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-增加-s-dotAll-标志" class="article-heading"><a href="#2-增加-s-dotAll-标志" class="headerlink" title="2. 增加 s/dotAll 标志"></a>2. 增加 s/dotAll 标志<a class="article-anchor" href="#2-增加-s-dotAll-标志" aria-hidden="true"></a></h2><p>在最新的 ECMAScript 规范中，为 JavaScript 的正则表达式增加了一个新的标志 <code>s</code> 用来表示 dotAll。以使 <code>.</code> 可以匹配任意字符。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/foo.bar/s.test(<span class="string">'foo\nbar'</span>);    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>High-level API</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> re = <span class="regexp">/foo.bar/</span>s;  <span class="comment">//  等价于 const re = new RegExp('foo.bar', 's');</span></span><br><span class="line">re.test(<span class="string">'foo\nbar'</span>);    <span class="comment">// true</span></span><br><span class="line">re.dotAll;      <span class="comment">// true</span></span><br><span class="line">re.flags;       <span class="comment">// "s"</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-命名由来" class="article-heading"><a href="#3-命名由来" class="headerlink" title="3. 命名由来"></a>3. 命名由来<a class="article-anchor" href="#3-命名由来" aria-hidden="true"></a></h2><p>既然是为了实现 dotAll 功能，为什么不命名为 <code>d</code> 或者 <code>a</code>。因为在其它语言的正则表达式实现中，已经使用 <code>s</code> 标志了：</p>
+<ul>
+<li>Java 使用 <code>Pattern.DOTALL</code></li>
+<li>C# 和 VB 使用 <code>RegexOptions.Singleline</code></li>
+<li>Python 同时支持 <code>re.DOTALL</code> 和 <code>re.S</code></li>
+</ul>
+<p>在支持正则表达式使用 flag 的语言如 Perl、PHP 也使用 <code>s</code> 作为标志。</p>
+<p><code>s</code> 的含义是 singleline 和 dotAll。</p>
+<p>singleline(单行)对应的是 multiline(多行)。</p>
+<p><code>m</code> 标志用于指定多行输入字符串应该被视为多个行。如果使用 <code>m</code> 标志，<code>^</code> 和 <code>$</code> 匹配的开始或结束是字符串中的每一行，而不是整个字符串的开始或结束。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">/^java/.test(<span class="string">'just\njava\n'</span>);   <span class="comment">// false</span></span><br><span class="line">/^java/m.test(<span class="string">'just\njava\n'</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>m</code> 标志只影响 <code>^</code> 和 <code>$</code></li>
+<li><code>s</code> 标志只影响 <code>.</code></li>
+</ul>
+<p>目前在 JavaScript 正则表示中所有修饰符的含义：</p>
+<ul>
+<li>g → global</li>
+<li>i → ignoreCase</li>
+<li>m → multiline</li>
+<li>y → sticky</li>
+<li>u → unicode</li>
+<li>s → dotAll</li>
+</ul>
+<h2 id="4-实现" class="article-heading"><a href="#4-实现" class="headerlink" title="4. 实现"></a>4. 实现<a class="article-anchor" href="#4-实现" aria-hidden="true"></a></h2><ul>
+<li><a href="https://bugs.chromium.org/p/v8/issues/detail?id=6172" target="_blank" rel="noopener">V8</a> - Chrome 62</li>
+<li><a href="https://bugs.webkit.org/show_bug.cgi?id=172634" target="_blank" rel="noopener">JavaScriptCore</a> - <a href="https://developer.apple.com/safari/technology-preview/release-notes/" target="_blank" rel="noopener">Safari Technology Preview 39a</a></li>
+<li><a href="https://github.com/Moddable-OpenSource/moddable/blob/public/xs/sources/xsre.c" target="_blank" rel="noopener">XS</a>, shipping in Moddable as of <a href="http://blog.moddable.tech/blog/january-17-2017-big-update-to-moddable-sdk/" target="_blank" rel="noopener">the January 17, 2018 update</a></li>
+<li><a href="https://github.com/mathiasbynens/regexpu" target="_blank" rel="noopener">regexpu (transpiler)</a> with the <code>{ dotAllFlag: true }</code> option enabled<ul>
+<li><a href="https://mothereff.in/regexpu#input=const+regex+%3D+/foo.bar/s%3B%0Aconsole.log%28%0A++regex.test%28%27foo%5Cnbar%27%29%0A%29%3B%0A//+%E2%86%92+true&amp;dotAllFlag=1" target="_blank" rel="noopener">online demo</a></li>
+<li><a href="https://github.com/mathiasbynens/babel-plugin-transform-dotall-regex" target="_blank" rel="noopener">Babel plugin</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/dmitrysoshnikov/regexp-tree#using-compat-transpiler-api" target="_blank" rel="noopener">Compat-transpiler of RegExp Tree</a><ul>
+<li><a href="https://github.com/dmitrysoshnikov/babel-plugin-transform-modern-regexp" target="_blank" rel="noopener">Babel plugin</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2019-07-12T02:11:43.303Z" itemprop="dateModified">上次更新：2019-07-12</time>
+                <a href="template-literal-revision.html" class="article-footer-prev" title="非转义序列的模板字符串"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="regexp-named-groups.html" class="article-footer-next" title="正则表达式命名捕获组"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概述"><span class="toc-text">1. 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-多字节-emoji-字符"><span class="toc-text">1.1 多字节 emoji 字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-行终结符-line-terminator-characters"><span class="toc-text">1.2 行终结符(line terminator characters)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-增加-s-dotAll-标志"><span class="toc-text">2. 增加 s/dotAll 标志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-命名由来"><span class="toc-text">3. 命名由来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-实现"><span class="toc-text">4. 实现</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">ES2016</strong><a href="exponentiation-operator.html" class="sidebar-link">幂运算符(**)</a><strong class="sidebar-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="sidebar-link">异步函数</a><a href="ecmascript_sharedmem.html" class="sidebar-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="sidebar-link">函数参数的末尾逗号</a><strong class="sidebar-title">ES2018</strong><a href="template-literal-revision.html" class="sidebar-link">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="sidebar-link current">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="sidebar-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="sidebar-link">对象展开运算符</a><strong class="sidebar-title">Stage4</strong><a href="async-iteration.html" class="sidebar-link">异步迭代器</a><a href="regexp-lookbehind.html" class="sidebar-link">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="sidebar-link">正则表达式 Unicode 转义</a><strong class="sidebar-title">FAQ</strong><a href="reserved-words.html" class="sidebar-link">保留字</a>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5061364613986259"
+        data-ad-slot="9593020197"
+        data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</aside>
+
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2019 <a href="https://github.com/justjavac/esnext/graphs/contributors" target="_blank">esnext</a><br>
+      本网站内容基于 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank">CC BY-NC-SA 4.0</a> 许可协议发布
+    </div>
+    <div id="footer-links">
+      <a href="https://weibo.com/justjavac" class="footer-link" target="_blank"><i class="fa fa-weibo"></i></a>
+      <a href="https://github.com/justjavac/esnext" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/proposal/exponentiation-operator.html" class="mobile-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="mobile-nav-link">API</a><a href="/news/" class="mobile-nav-link">文章</a><a href="/plugins/" class="mobile-nav-link">插件</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/justjavac/esnext" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">ES2016</strong><a href="exponentiation-operator.html" class="mobile-nav-link">幂运算符(**)</a><strong class="mobile-nav-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="mobile-nav-link">异步函数</a><a href="ecmascript_sharedmem.html" class="mobile-nav-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="mobile-nav-link">函数参数的末尾逗号</a><strong class="mobile-nav-title">ES2018</strong><a href="template-literal-revision.html" class="mobile-nav-link">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="mobile-nav-link current">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="mobile-nav-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="mobile-nav-link">对象展开运算符</a><strong class="mobile-nav-title">Stage4</strong><a href="async-iteration.html" class="mobile-nav-link">异步迭代器</a><a href="regexp-lookbehind.html" class="mobile-nav-link">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="mobile-nav-link">正则表达式 Unicode 转义</a><strong class="mobile-nav-title">FAQ</strong><a href="reserved-words.html" class="mobile-nav-link">保留字</a>
+    
+  </div>
+</nav>
+  <!-- Scripts -->
+<script src="/build/js/main-5d0f56746e.js"></script>
+
+
+</body>
+</html>

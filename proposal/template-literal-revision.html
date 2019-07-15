@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#"><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>非转义序列的模板字符串 | esnext | es6 es7 es2017 es2018 es2019</title>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://esnext.justjavac.com/proposal/template-literal-revision.html">
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#2f83cd">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/build/css/navy-ae512ba918.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="esnext | es6 es7 es2017 es2018 es2019">
+  <!-- Open Graph -->
+  <meta name="description" content="这个 ECMAScript 提案 “Template Literal Revision” 由 Tim Disney 负责，目前已经进入 stage 4，本提案是 ECMAScript 2018(ES9) 的一部分。该提案让我们使用模板字符串的标签函数语法更加的自由。 1. 标签函数 Tagged templates标签使您可以用函数解析模板字符串。标签函数的第一个参数包含一个字符串值的数组。其余的">
+<meta property="og:type" content="website">
+<meta property="og:title" content="非转义序列的模板字符串">
+<meta property="og:url" content="http://esnext.justjavac.com/proposal/template-literal-revision.html">
+<meta property="og:site_name" content="esnext | es6 es7 es2017 es2018 es2019">
+<meta property="og:description" content="这个 ECMAScript 提案 “Template Literal Revision” 由 Tim Disney 负责，目前已经进入 stage 4，本提案是 ECMAScript 2018(ES9) 的一部分。该提案让我们使用模板字符串的标签函数语法更加的自由。 1. 标签函数 Tagged templates标签使您可以用函数解析模板字符串。标签函数的第一个参数包含一个字符串值的数组。其余的">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2019-07-12T02:11:43.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="非转义序列的模板字符串">
+<meta name="twitter:description" content="这个 ECMAScript 提案 “Template Literal Revision” 由 Tim Disney 负责，目前已经进入 stage 4，本提案是 ECMAScript 2018(ES9) 的一部分。该提案让我们使用模板字符串的标签函数语法更加的自由。 1. 标签函数 Tagged templates标签使您可以用函数解析模板字符串。标签函数的第一个参数包含一个字符串值的数组。其余的">
+<meta name="twitter:site" content="justjavac">
+ <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1f336f31cd6db48ca0ad520a9c7e4c57";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">Hexo</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/proposal/exponentiation-operator.html" class="main-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="main-nav-link">API</a><a href="/news/" class="main-nav-link">文章</a><a href="/plugins/" class="main-nav-link">插件</a>
+      <a target="_blank" href="https://github.com/justjavac/esnext" class="main-nav-link"><i class="fa fa-github-alt"></i></a>
+    </nav>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">非转义序列的模板字符串</h1>
+                <a href="https://github.com/justjavac/esnext/edit/master/source/proposal/template-literal-revision.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>这个 ECMAScript 提案 “<a href="https://tc39.github.io/proposal-template-literal-revision/" target="_blank" rel="noopener">Template Literal Revision</a>” 由 Tim Disney 负责，目前已经进入 stage 4，本提案是 ECMAScript 2018(ES9) 的一部分。该提案让我们使用模板字符串的标签函数语法更加的自由。</p>
+<h2 id="1-标签函数-Tagged-templates" class="article-heading"><a href="#1-标签函数-Tagged-templates" class="headerlink" title="1. 标签函数 Tagged templates"></a>1. 标签函数 Tagged templates<a class="article-anchor" href="#1-标签函数-Tagged-templates" aria-hidden="true"></a></h2><p>标签使您可以用函数解析模板字符串。标签函数的第一个参数包含一个字符串值的数组。其余的参数与表达式相关。最后，你的函数可以返回处理好的的字符串（或者它可以返回完全不同的东西）。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str[<span class="number">0</span>].toUpperCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo<span class="string">`justjavac`</span>; <span class="comment">// 输出 JUSTJAVAC</span></span><br><span class="line">foo<span class="string">`Xyz`</span>; <span class="comment">// 输出 XYZ</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-String-raw" class="article-heading"><a href="#2-String-raw" class="headerlink" title="2. String.raw()"></a>2. <code>String.raw()</code><a class="article-anchor" href="#2-String-raw" aria-hidden="true"></a></h2><p><code>String.raw()</code> 是一个模板字符串的标签函数，它的作用类似于 Python 中的字符串前缀 r 和 C# 中的字符串前缀 @，是用来获取一个模板字符串的<strong>原始字面量值</strong>的。</p>
+<p>语法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>.raw(callSite, ...substitutions)</span><br><span class="line"><span class="built_in">String</span>.raw<span class="string">`templateString`</span></span><br></pre></td></tr></table></figure>
+<p><code>String.raw()</code> 是唯一一个内置的模板字符串标签函数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="built_in">String</span>.raw<span class="string">`Hi\n<span class="subst">$&#123;<span class="number">2</span>+<span class="number">3</span>&#125;</span>!`</span>;</span><br><span class="line"><span class="comment">// "Hi\n5!"</span></span><br><span class="line"></span><br><span class="line">str.length;</span><br><span class="line"><span class="comment">// 字符串长度为 6</span></span><br><span class="line"></span><br><span class="line">str.split(<span class="string">''</span>).join(<span class="string">','</span>);</span><br><span class="line"><span class="comment">// 分隔字符串</span></span><br><span class="line"><span class="comment">// 结果是："H,i,\,n,5,!"</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-原始字符串" class="article-heading"><a href="#3-原始字符串" class="headerlink" title="3. 原始字符串"></a>3. 原始字符串<a class="article-anchor" href="#3-原始字符串" aria-hidden="true"></a></h2><p>在标签函数的第一个参数中，存在一个特殊的属性 <code>raw</code>，我们可以通过它来访问模板字符串的原始字符串，而不经过特殊字符的替换。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(str);</span><br><span class="line">    <span class="keyword">return</span> str[<span class="number">0</span>].toUpperCase();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo<span class="string">`justjavac`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 控制台输出</span></span><br><span class="line">[<span class="string">"justjavac"</span>, <span class="attr">raw</span>: [<span class="string">"justjavac"</span>]]</span><br><span class="line"></span><br><span class="line">foo<span class="string">`just\\java\\c`</span>;</span><br><span class="line"><span class="comment">// 控制台输出</span></span><br><span class="line">[<span class="string">"just\java\c"</span>, <span class="attr">raw</span>: [<span class="string">"just\\java\\c"</span>]]</span><br></pre></td></tr></table></figure>
+<h2 id="4-带标签函数的转义序列" class="article-heading"><a href="#4-带标签函数的转义序列" class="headerlink" title="4. 带标签函数的转义序列"></a>4. 带标签函数的转义序列<a class="article-anchor" href="#4-带标签函数的转义序列" aria-hidden="true"></a></h2><p>自 ES2016 起，带标签的模版字面量遵守以下转义序列的规则：</p>
+<ul>
+<li>Unicode字符以”\u”开头，例如 <code>\u00A9</code></li>
+<li>Unicode码位用”\u{}”表示，例如 <code>\u{2F804}</code></li>
+<li>十六进制以”\x”开头，例如 <code>\xA9</code></li>
+<li>八进制以”\”和数字开头，例如 <code>\251</code></li>
+</ul>
+<p>对于每一个 ECMAScript 语法，解析器都会去查找有效的转义序列，对于无效的转义序列，直接抛出 <code>SyntaxError</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">String</span>.raw<span class="string">`\`;</span></span><br><span class="line"><span class="string">Uncaught SyntaxError: Unterminated template literal</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-ES2018-关于非法转义序列的修订" class="article-heading"><a href="#5-ES2018-关于非法转义序列的修订" class="headerlink" title="5. ES2018 关于非法转义序列的修订"></a>5. ES2018 关于非法转义序列的修订<a class="article-anchor" href="#5-ES2018-关于非法转义序列的修订" aria-hidden="true"></a></h2><p>带标签函数的模版字符串应该允许嵌套支持常见转义序列的语言（例如 <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener">DSLs</a>、<a href="https://en.wikipedia.org/wiki/LaTeX" target="_blank" rel="noopener">LaTeX</a>）。</p>
+<p>因此 ECMAScript 2018 标准移除了对 ECMAScript 在带标签的模版字符串中转义序列的语法限制。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tag</span>(<span class="params">strs</span>) </span>&#123;</span><br><span class="line">  strs[<span class="number">0</span>] === <span class="literal">undefined</span></span><br><span class="line">  strs.raw[<span class="number">0</span>] === <span class="string">"\\unicode and \\u&#123;55&#125;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在标签函数中使用</span></span><br><span class="line">tag<span class="string">`\unicode and \u&#123;55&#125;`</span>; <span class="comment">// 结果是 undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不在标签函数中使用</span></span><br><span class="line"><span class="keyword">let</span> bad = <span class="string">`bad escape sequence: \unicode`</span>;</span><br><span class="line"><span class="comment">// throws early error：SyntaxError: Invalid Unicode escape sequence</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-实现" class="article-heading"><a href="#6-实现" class="headerlink" title="6. 实现"></a>6. 实现<a class="article-anchor" href="#6-实现" aria-hidden="true"></a></h2><ul>
+<li><a href="https://bugs.chromium.org/p/v8/issues/detail?id=5546" target="_blank" rel="noopener">V8</a> - Chrome 62</li>
+<li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1317375" target="_blank" rel="noopener">SpiderMonkey</a> - Firefox 53</li>
+<li><a href="https://bugs.webkit.org/show_bug.cgi?id=166871" target="_blank" rel="noopener">JavaScriptCore</a> - 版本未知</li>
+<li><a href="https://github.com/Microsoft/ChakraCore/issues/2344" target="_blank" rel="noopener">ChakraCore</a> - 开发中</li>
+<li><a href="https://github.com/babel/babel/issues/4798" target="_blank" rel="noopener">Babel</a> - 7.x</li>
+</ul>
+<h2 id="7-相关链接：" class="article-heading"><a href="#7-相关链接：" class="headerlink" title="7. 相关链接："></a>7. 相关链接：<a class="article-anchor" href="#7-相关链接：" aria-hidden="true"></a></h2><ul>
+<li><a href="https://github.com/tc39/proposal-template-literal-revision" target="_blank" rel="noopener">https://github.com/tc39/proposal-template-literal-revision</a></li>
+<li><a href="https://tc39.github.io/proposal-template-literal-revision/" target="_blank" rel="noopener">https://tc39.github.io/proposal-template-literal-revision/</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2019-07-12T02:11:43.304Z" itemprop="dateModified">上次更新：2019-07-12</time>
+                <a href="trailing-function-commas.html" class="article-footer-prev" title="函数参数的末尾逗号"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="regexp-dotall-flag.html" class="article-footer-next" title="正则表达式 <code>dotAll</code> 模式"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-标签函数-Tagged-templates"><span class="toc-text">1. 标签函数 Tagged templates</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-String-raw"><span class="toc-text">2. String.raw()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-原始字符串"><span class="toc-text">3. 原始字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-带标签函数的转义序列"><span class="toc-text">4. 带标签函数的转义序列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-ES2018-关于非法转义序列的修订"><span class="toc-text">5. ES2018 关于非法转义序列的修订</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-实现"><span class="toc-text">6. 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-相关链接："><span class="toc-text">7. 相关链接：</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">ES2016</strong><a href="exponentiation-operator.html" class="sidebar-link">幂运算符(**)</a><strong class="sidebar-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="sidebar-link">异步函数</a><a href="ecmascript_sharedmem.html" class="sidebar-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="sidebar-link">函数参数的末尾逗号</a><strong class="sidebar-title">ES2018</strong><a href="template-literal-revision.html" class="sidebar-link current">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="sidebar-link">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="sidebar-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="sidebar-link">对象展开运算符</a><strong class="sidebar-title">Stage4</strong><a href="async-iteration.html" class="sidebar-link">异步迭代器</a><a href="regexp-lookbehind.html" class="sidebar-link">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="sidebar-link">正则表达式 Unicode 转义</a><strong class="sidebar-title">FAQ</strong><a href="reserved-words.html" class="sidebar-link">保留字</a>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5061364613986259"
+        data-ad-slot="9593020197"
+        data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</aside>
+
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2019 <a href="https://github.com/justjavac/esnext/graphs/contributors" target="_blank">esnext</a><br>
+      本网站内容基于 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank">CC BY-NC-SA 4.0</a> 许可协议发布
+    </div>
+    <div id="footer-links">
+      <a href="https://weibo.com/justjavac" class="footer-link" target="_blank"><i class="fa fa-weibo"></i></a>
+      <a href="https://github.com/justjavac/esnext" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/proposal/exponentiation-operator.html" class="mobile-nav-link">提案</a><a href="/api/Array.prototype.includes.html" class="mobile-nav-link">API</a><a href="/news/" class="mobile-nav-link">文章</a><a href="/plugins/" class="mobile-nav-link">插件</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/justjavac/esnext" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">ES2016</strong><a href="exponentiation-operator.html" class="mobile-nav-link">幂运算符(**)</a><strong class="mobile-nav-title">ES2017</strong><a href="ecmascript-asyncawait.html" class="mobile-nav-link">异步函数</a><a href="ecmascript_sharedmem.html" class="mobile-nav-link">共享内存和原子操作</a><a href="trailing-function-commas.html" class="mobile-nav-link">函数参数的末尾逗号</a><strong class="mobile-nav-title">ES2018</strong><a href="template-literal-revision.html" class="mobile-nav-link current">非转义序列的模板字符串</a><a href="regexp-dotall-flag.html" class="mobile-nav-link">正则表达式 <code>dotAll</code> 模式</a><a href="regexp-named-groups.html" class="mobile-nav-link">正则表达式命名捕获组</a><a href="object-rest-spread.html" class="mobile-nav-link">对象展开运算符</a><strong class="mobile-nav-title">Stage4</strong><a href="async-iteration.html" class="mobile-nav-link">异步迭代器</a><a href="regexp-lookbehind.html" class="mobile-nav-link">正则表达式反向(后向)断言</a><a href="regexp-unicode-property-escapes.html" class="mobile-nav-link">正则表达式 Unicode 转义</a><strong class="mobile-nav-title">FAQ</strong><a href="reserved-words.html" class="mobile-nav-link">保留字</a>
+    
+  </div>
+</nav>
+  <!-- Scripts -->
+<script src="/build/js/main-5d0f56746e.js"></script>
+
+
+</body>
+</html>
