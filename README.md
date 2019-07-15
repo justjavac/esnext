@@ -4,7 +4,7 @@
 
 介绍最新的 ECMAScript/JavaScript 规范，以及 TC39 的提案进度。
 
-测试一下 http://es2018puzzlers.justjavac.com
+测试一下 https://es2018puzzlers.justjavac.com
 
 ## Getting started
 
